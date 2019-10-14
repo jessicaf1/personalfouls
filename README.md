@@ -17,6 +17,7 @@ It is often difficult to balance being an NFL fan with being a socially consciou
 #### Wireframe
 ![Screen Shot 2019-10-14 at 4 43 58 PM](https://user-images.githubusercontent.com/44717186/66781992-b75dc800-eea2-11e9-87d7-eeb595efa23f.png)
 
+Data visualization key: The data is represented in a single screen (a) consisting of a football field (b) with circles representing the players (c). There will be a primary data list (b), links to Github and LinkedIn (e) and a footer (f).  
 
  #### Bonus Features
 •	Users can see a map of the US and hover over states to see the number of arrests per player in that state 
