@@ -6,9 +6,12 @@ It is often difficult to balance being an NFL fan with being a socially consciou
 
 #### Functionality and MVPs
 
-•	Users can see a football field populated by dots representing players with arrest records; hovering over the dots will reveal the player’s’ name 
+•	Users can see a football field populated by dots representing players with arrest records; hovering over the dots will reveal the player’s name 
+
 •	Dots are color-coded by position, with opacity of the color corresponding to the number of arrests (i.e. blue for QBs, opaque blue for a QB with many arrests, transparent blue for a QB with one)
+
 •	Users can toggle between this chart and a list
+
 •	Users can refine by type of arrest
 
 #### Wireframe
