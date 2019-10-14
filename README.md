@@ -41,7 +41,7 @@ Day 4 (Friday)
 * Style the lists.
 
 Weekend
-*Fix Bugs 
+* Fix Bugs 
 
  #### Bonus Features
 •	Users can see a map of the US and hover over states to see the number of arrests per player in that state.  
