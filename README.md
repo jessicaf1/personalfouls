@@ -46,5 +46,10 @@ Weekend
 #### Data and APIs
 * I plan on using the NFLArrests API and using the Javascript Fetch API (note: still feel pretty confused about this).
 
+#### Technologies
+* Javascript to retrieve data
+* D3.js and CSS for implementing data visualization 
+* Webpack for bundling files
+
  #### Bonus Features
 •	Users can see a map of the US and hover over states to see the number of arrests per player in that state (could also implement this as part of the dropdown menu).  
