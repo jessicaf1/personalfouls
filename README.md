@@ -16,7 +16,7 @@ It is often difficult to balance being an NFL fan with being a socially consciou
 
 #### Wireframe
 
-https://wireframe.cc/pro/pp/1b3602341281626
+https://user-images.githubusercontent.com/44717186/66781670-ea538c00-eea1-11e9-9114-053fafbe0cfd.png
 
  #### Bonus Features
 •	Users can see a map of the US and hover over states to see the number of arrests per player in that state 
