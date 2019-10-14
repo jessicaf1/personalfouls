@@ -32,8 +32,8 @@ Day 2 (Wednesday)
 Day 3 (Thursday) 
 * Implement the ability to refine the user's search by arrest type.  
 
-Day 4 Friday)
-Focus on CSS, making the interaction with the graph as seamless and clear as possible.  
+Day 4 (Friday)
+* Focus on CSS, making the interaction with the graph as seamless and clear as possible.  
 * Style the field, making it resemble an actual football field. 
 * Style the lists.
 
