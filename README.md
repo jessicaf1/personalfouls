@@ -43,5 +43,8 @@ Day 4 (Friday)
 Weekend
 * Fix Bugs 
 
+#### Data and APIs
+* I plan on using the NFLArrests API and using the Javascript Fetch API (note: still feel pretty confused about this).
+
  #### Bonus Features
 •	Users can see a map of the US and hover over states to see the number of arrests per player in that state (could also implement this as part of the dropdown menu).  
