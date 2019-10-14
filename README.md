@@ -2,7 +2,7 @@
 
 #### Overview
 
-It is difficult to balance being an NFL fan with being a socially conscious person. Personal Fouls can't help with everything, but it can alleviate some guilt by mapping out NFL arrest records, allowing NFL fans to identify players to avoid rooting for or picking in a fantasy draft.  The NFLArrest.com API offers a comprehensive look at arrest records, organized by crime, by team, by player and by position.  Personal Fouls uses these data points to explore NFL arrests, focusing particularly on players in the four most fantasy-relevant positions.   
+It is difficult to balance being an NFL fan with being a socially conscious person. Personal Fouls can alleviate some of that guilt by mapping out NFL arrest records, allowing NFL fans to identify players to avoid rooting for or picking in a fantasy draft.  The NFLArrest.com API offers a comprehensive look at arrest records, organized by crime, by team, by player and by position.  Personal Fouls uses these data points to explore NFL arrests, focusing particularly on players in the four most fantasy-relevant positions.   
 
 #### Functionality and MVPs
 
