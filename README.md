@@ -1,4 +1,4 @@
-##Personal Fouls: A NFL Arrest Data Visualization 
+## Personal Fouls: A NFL Arrest Data Visualization 
 
 Overview
 It is often difficult to balance being an NFL fan with being a socially conscious person. Fantasy football in particular is a real minefield for those who try to avoid drafting morally questionable players.  The NFLArrest.com API offers a comprehensive look at arrest records, organized by crime, by team, by player and by position.  Personal Fouls uses these data points to explore NFL arrests, focusing particularly on players in fantasy-relevant positions.  
