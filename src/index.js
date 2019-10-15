@@ -11,19 +11,25 @@ window.addEventListener('DOMContentLoaded', () => {
 // fetch("http://nflarrest.com/api/v1/player", {
 
 // });
-
+let arr; 
 fetch("http://nflarrest.com/api/v1/player")
   .then(function(response) {
+    //   debugger
     if (response.status !== 200) {
+        
       console.log(
-        "Looks like there was a problem. Status Code: " + response.status
+        "error" + response.status
       );
       return;
     }
-
-    // Examine the text in the response
     response.json().then(function(data) {
+        
+        arr = Object.values(data)
+        debugger
+        createVisualization();
+
       console.log(data);
+    //   console.log(data.map(player => player.Position)) 
     });
   })
   .catch(function(err) {
@@ -121,3 +127,61 @@ fetch("http://nflarrest.com/api/v1/player")
 //     .attr('width', 200)
 //     .attr('height', 100)
 //     .attr('fill', 'green')
+
+// d3.json("http://nflarrest.com/api/v1/player", function(error, data) {
+//     data.forEach(function(d) {
+//         d.Position = d.Position;
+//         d.arrest_count = +d.arrest_count;
+//     });
+
+//     svg.append('d.Position');
+
+// } 
+
+// d3.csv("http://nflarrest.com/api/v1/player");
+//     debugger
+
+//   d3.csv("http://nflarrest.com/api/v1/player",
+//     function(d) {
+//         debugger
+//       return {
+//         position: d.Position,
+//         arrest_count: +d.arrest_count,
+//         name: d.name
+//       };
+//     },
+//     function(error, rows) {
+//         debugger
+//       arr = rows;
+//       console.log(arr);
+//       createVisualization();
+//     });
+// let a = [[3, 4], [500, 6]]
+// let arr2 = arr.map(player=> { return  player.arrest_count} )
+
+var xScale = d3.scaleLinear()
+  .domain([0, 15])
+  .range([0, 15]);
+
+var yScale = d3.scaleLinear()
+  .domain([0, 20])
+  .range([0, 20]);
+
+    function createVisualization() { 
+        debugger
+        svg.selectAll("circle")
+        // debugger
+            .data(arr)
+            .enter()
+            .append('circle')
+            .attr("cx", function(d) {
+	   		return xScale(parseInt(d.arrest_count));
+	    })
+	        .attr("cy", function(d) {
+	   		return yScale(parseInt(d.arrest_count));
+	        })
+            .attr('r', 5)
+            debugger 
+        } 
+
+    // createVisualization();
