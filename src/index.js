@@ -164,8 +164,8 @@ var xScale = d3.scaleLinear()
   .range([0, 15]);
 
 var yScale = d3.scaleLinear()
-  .domain([0, 20])
-  .range([0, 20]);
+  .domain([-5, 10])
+  .range([0, 10]);
 
     function createVisualization() { 
         debugger
@@ -175,12 +175,25 @@ var yScale = d3.scaleLinear()
             .enter()
             .append('circle')
             .attr("cx", function(d) {
-	   		return xScale(parseInt(d.arrest_count));
+	   		return xScale(parseInt(d.arrest_count * 100));
 	    })
 	        .attr("cy", function(d) {
-	   		return yScale(parseInt(d.arrest_count));
+	   		return yScale(parseInt(d.Name.length + 100));
 	        })
-            .attr('r', 5)
+            .attr('r', 10)
+            .attr('fill', function(d) {
+                if(d.Position === 'WR') {
+                    return 'white'}
+                    else if (d.Position === "RB") {
+                           return "blue";
+                         } else if (d.Position === "QB") {
+                           return "red";
+                         } else if (d.Position === "TE") {
+                           return "orange";
+                         } else {
+                           return "rgba(1, 1, 1, 0.0)";
+                         }
+                })
             debugger 
         } 
 
