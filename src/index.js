@@ -42,7 +42,7 @@ fetch("http://nflarrest.com/api/v1/player")
     });
 
 var svgWidth = 900,
-    svgHeight = 500;
+    svgHeight = 505;
 var svg = d3.select('svg')
     .attr('width', svgWidth)
     .attr('height', svgHeight)
@@ -50,22 +50,22 @@ var svg = d3.select('svg')
 
 var line = svg
   .append("line")
-  .attr("x1", 40)
-  .attr("x2", 40)
+  .attr("x1", 10)
+  .attr("x2", 10)
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.8");
 
 
 svg
   .append("line")
-  .attr("x1", 130)
-  .attr("x2", 130)
+  .attr("x1", 100)
+  .attr("x2", 100)
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.0");
 
 // svg.append('circle')
 //     .attr('cx', 400)
@@ -81,7 +81,7 @@ svg
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.0");
 
 svg
   .append("line")
@@ -90,7 +90,7 @@ svg
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.0");
 
 svg
   .append("line")
@@ -99,61 +99,61 @@ svg
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.0");
 
 svg
   .append("line")
-  .attr("x1", 490)
-  .attr("x2", 490)
+  .attr("x1", 498)
+  .attr("x2", 498)
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.0");
 
 svg
   .append("line")
-  .attr("x1", 580)
-  .attr("x2", 580)
+  .attr("x1", 596)
+  .attr("x2", 596)
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.0");
 
 svg
   .append("line")
-  .attr("x1", 670)
-  .attr("x2", 670)
+  .attr("x1", 694)
+  .attr("x2", 694)
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.0");
 
 svg
   .append("line")
-  .attr("x1", 760)
-  .attr("x2", 760)
+  .attr("x1", 792)
+  .attr("x2", 792)
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.0");
 
 svg
   .append("line")
-  .attr("x1", 850)
-  .attr("x2", 850)
+  .attr("x1", 890)
+  .attr("x2", 890)
   .attr("y1", 10)
   .attr("y2", 480)
   .attr("stroke", "white")
-  .attr("stroke-width", "2.4");
+  .attr("stroke-width", "2.8");
 
   svg
     .append("line")
-    .attr("x1", 0)
-    .attr("x2", 900)
+    .attr("x1", 9)
+    .attr("x2", 891)
     .attr("y1", 10)
     .attr("y2", 10)
     .attr("stroke", "white")
-    .attr("stroke-width", "1");
+    .attr("stroke-width", "2.8");
 
 
 
@@ -206,54 +206,78 @@ var yScale = d3.scaleLinear()
 
 
 
-function createVisualization() {
-    debugger
-    svg.selectAll("circle")
-        // debugger
-        .data(arr2)
-        .enter()
-        .append('circle')
-        // .filter(function(d){ return d.Position === position})
-        .attr("cx", function(d) {
-            return xScale(parseInt(d.arrest_count));
-        })
-        .attr("cy", function(d) {
-            // return yScale(parseInt(d.Name.length));
-            return yScale(getRando(2, 22));
-        })
-        .attr('class', 'dots')
-        .attr('r', 8)
-        .attr('opacity', function(d) {
-            if (parseInt(d.arrest_count) <= 2) {
-                return .5
-            } else if (parseInt(d.arrest_count) === 3) {
-                return .7
-            } else if (parseInt(d.arrest_count) === 4) {
-                return .8
-            } else {
-                return 1
+function createVisualization(position = "WR") {
+    debugger 
+    svg.selectAll("circle").remove();
+    svg
+      .selectAll("circle")
+      // debugger
+      .data(
+        arr2.filter(function(d) {
+            // debugger
+            if(position === 'All'){
+                // debugger
+                return true 
             }
+            else {
+                debugger
+          //return true if position === 'All'  
+            return d.Position === position;
+            } 
         })
-        .attr('fill', function(d) {
-            if (d.Position === 'WR') {
-                return 'white'
-            } else if (d.Position === "RB") {
-                return "blue";
-            } else if (d.Position === "QB") {
-                return "orange";
-            } else if (d.Position === "TE") {
-                return "yellow";
-            }
-        })
-        .on("mouseover", function(d) {
-            return tooltip.style("visibility", "visible").text(d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests");
-        })
-        .on("mousemove", function(d) {
-            return tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px").text(d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests");
-        })
-        .on("mouseout", function(d) {
-            return tooltip.style("visibility", "hidden");
-        });
+      )
+      .enter()
+      .append("circle")
+
+      .attr("cx", function(d) {
+        return xScale(parseInt(d.arrest_count));
+      })
+      .attr("cy", function(d) {
+        // return yScale(parseInt(d.Name.length));
+        return yScale(getRando(2, 22));
+      })
+      .attr("class", "dots")
+      .attr("r", 8)
+      .attr("opacity", function(d) {
+        if (parseInt(d.arrest_count) <= 2) {
+          return 0.5;
+        } else if (parseInt(d.arrest_count) === 3) {
+          return 0.7;
+        } else if (parseInt(d.arrest_count) === 4) {
+          return 0.8;
+        } else {
+          return 1;
+        }
+      })
+      .attr("fill", function(d) {
+        if (d.Position === "WR") {
+          return "white";
+        } else if (d.Position === "RB") {
+          return "blue";
+        } else if (d.Position === "QB") {
+          return "orange";
+        } else if (d.Position === "TE") {
+          return "yellow";
+        }
+      })
+      .on("mouseover", function(d) {
+        return tooltip
+          .style("visibility", "visible")
+          .text(
+            d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
+          );
+      })
+      .on("mousemove", function(d) {
+        return tooltip
+          .style("top", event.pageY - 10 + "px")
+          .style("left", event.pageX + 10 + "px")
+          .text(
+            d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
+          );
+      })
+      .on("mouseout", function(d) {
+        return tooltip.style("visibility", "hidden");
+      });
     debugger
 }
 
@@ -280,7 +304,7 @@ var xAxis = d3
   // .ticks(20)
 //   .tickArguments([10], "|")
 
-//   .tickSize([6])
+  .tickSize([9])
 //   .tickSizeOuter([10])
   // .orient("bottom")
   // .ticks(50)
@@ -317,31 +341,65 @@ svg.append("g")
 // body.append('div')
 //     .attr("class", "divv")
 //     .text("arrest")
-
-
-
-const positions = ["QB", "WR", "TE", "RB"]
-
-let dropdownButton = d3.select("ddbutton")
-    .selectAll('options')
-    .data(positions)
-    .enter()
-    .append('option')
-    .text(function (d) {return d} )
-    .attr('value', function (d) {return d})
-
-dropdownButton.on("change", function(d){
-    const selectedOption = d3.select(this).property('value')
-    createVisualization(selectedOption)
+debugger
+document.getElementById('button1').addEventListener('click', function(d){
+    debugger
+    createVisualization(d.target.innerText)
 })
+document.getElementById("button2").addEventListener("click", function(d) {
+    debugger
+  createVisualization(d.target.innerText);
+});
 
-var button = svg.append('button')
-    .attr('class', 'ddbutton')
+document.getElementById("button3").addEventListener("click", function(d) {
+  debugger;
+  createVisualization(d.target.innerText);
+});
 
-var button = svg.append('button')
-  .selectAll(".ddbutton")
-  .data(positions)
-  .enter()
-  .append("g")
-  .attr("class", "button")
-  .call(button);
+document.getElementById("button4").addEventListener("click", function(d) {
+  debugger;
+  createVisualization(d.target.innerText);
+});
+
+document.getElementById("button5").addEventListener("click", function(d) {
+  debugger;
+  createVisualization(d.target.innerText);
+});
+
+// const positions = ["QB", "WR", "TE", "RB"]
+// debugger
+// let dropdownButton = d3.select("ddbutton")
+//     .selectAll('options')
+//     .data(positions)
+//     .enter()
+//     .append('option')
+//     .text(function (d) {return d} )
+//     .attr('value', function (d) {return d})
+
+// dropdownButton.on("change", function(d){
+//     const selectedOption = d3.select(this).property('value')
+//     createVisualization(selectedOption)
+// })
+
+// var button = svg.append('button')
+//     .attr('class', 'ddbutton')
+
+// var button = svg.append('button')
+//   .selectAll(".ddbutton")
+//   .data(positions)
+//   .enter()
+//   .append("g")
+//   .attr("class", "button")
+//   .call(button);
+debugger
+arr2.map(player => {
+    debugger
+ 
+  fetch(`http://nflarrest.com/api/v1/player/topCrimes/${player}.Name`).then(
+    function(response) {
+      response.json().then(function(data) {
+        return console.log(data);
+      });
+    }
+  );
+});
