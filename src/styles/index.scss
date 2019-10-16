@@ -1,5 +1,6 @@
 body {
     background-color: white;
+
     color: green;
 }
 
@@ -18,4 +19,37 @@ body {
 
 .divv {
     color: red;
+}
+
+#ddbutton {
+    color: black; 
+    background: red; 
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 100; 
+    width: 50px;
+    height: 50px;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: white; 
+    stroke-width: 1.4px;
+}
+
+#header {
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+#image {
+   width: 50px;
+   height: 40px;
+   margin-left: 10px;
+   margin-top: 10px; 
+}
+
+#h {
+    display: flex;
+    margin-left: 10px;
 }

@@ -48,84 +48,114 @@ var svg = d3.select('svg')
     .attr('height', svgHeight)
     .attr('class', 'svg-container')
 
-var line = svg.append('line')
-    .attr("x1", 40)
-    .attr("x2", 40)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+var line = svg
+  .append("line")
+  .attr("x1", 40)
+  .attr("x2", 40)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
 
-
-svg.append("line")
-    .attr("x1", 130)
-    .attr("x2", 130)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
 
 svg
-    .append("line")
-    .attr("x1", 220)
-    .attr("x2", 220)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+  .append("line")
+  .attr("x1", 130)
+  .attr("x2", 130)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
+
+// svg.append('circle')
+//     .attr('cx', 400)
+//     .attr('cy', 300)
+//     .attr('r', 50)
+//     .attr('fill', 'none')
+//     .attr('stroke', 'white')
 
 svg
-    .append("line")
-    .attr("x1", 310)
-    .attr("x2", 310)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+  .append("line")
+  .attr("x1", 220)
+  .attr("x2", 220)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
 
 svg
-    .append("line")
-    .attr("x1", 400)
-    .attr("x2", 400)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+  .append("line")
+  .attr("x1", 310)
+  .attr("x2", 310)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
 
 svg
-    .append("line")
-    .attr("x1", 490)
-    .attr("x2", 490)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+  .append("line")
+  .attr("x1", 400)
+  .attr("x2", 400)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
 
 svg
-    .append("line")
-    .attr("x1", 580)
-    .attr("x2", 580)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+  .append("line")
+  .attr("x1", 490)
+  .attr("x2", 490)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
 
 svg
-    .append("line")
-    .attr("x1", 670)
-    .attr("x2", 670)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+  .append("line")
+  .attr("x1", 580)
+  .attr("x2", 580)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
 
 svg
-    .append("line")
-    .attr("x1", 760)
-    .attr("x2", 760)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+  .append("line")
+  .attr("x1", 670)
+  .attr("x2", 670)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
 
 svg
+  .append("line")
+  .attr("x1", 760)
+  .attr("x2", 760)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
+
+svg
+  .append("line")
+  .attr("x1", 850)
+  .attr("x2", 850)
+  .attr("y1", 10)
+  .attr("y2", 480)
+  .attr("stroke", "white")
+  .attr("stroke-width", "2.4");
+
+  svg
     .append("line")
-    .attr("x1", 850)
-    .attr("x2", 850)
-    .attr("y1", 0)
-    .attr("y2", 600)
-    .attr("stroke", "white");
+    .attr("x1", 0)
+    .attr("x2", 900)
+    .attr("y1", 10)
+    .attr("y2", 10)
+    .attr("stroke", "white")
+    .attr("stroke-width", "1");
+
+
 
 //   var rect = svg.append('rect')
 //     .attr('x', 400)
@@ -168,7 +198,8 @@ svg
 var xScale = d3.scaleLinear()
     .domain([0, 20])
     .range([0, 2200]);
-
+    // .domain([0, d3.max(data)])
+    // .range([300, 0])
 var yScale = d3.scaleLinear()
     .domain([0, 20])
     .range([0, 400]);
@@ -177,13 +208,12 @@ var yScale = d3.scaleLinear()
 
 function createVisualization() {
     debugger
-
-
     svg.selectAll("circle")
         // debugger
         .data(arr2)
         .enter()
         .append('circle')
+        // .filter(function(d){ return d.Position === position})
         .attr("cx", function(d) {
             return xScale(parseInt(d.arrest_count));
         })
@@ -244,20 +274,74 @@ const tooltip = d3.select("body")
 
 
 
-var xAxis = d3.axisBottom()
-    .scale(xScale)
-    .tickSize(10)
-    // .orient("bottom")
-    // .ticks(5)
-    // .style("stroke", "pink")
-    // .style("z-index", 100)
+var xAxis = d3
+  .axisBottom()
+  .scale(xScale)
+  // .ticks(20)
+//   .tickArguments([10], "|")
+
+//   .tickSize([6])
+//   .tickSizeOuter([10])
+  // .orient("bottom")
+  // .ticks(50)
+  // .tickFormat(x=>)
+  // .style("stroke", "pink")
+  // .style("z-index", 100)
+  //.tickValues([range(0, 8)])
+  .tickValues([ .1, .2, .3, .4, .5, .6, .7, .8, .9, 
+    1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 
+    2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 
+    3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 
+    4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0,
+    5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9,
+    6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7.0,
+    7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1
+]);
+      xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
+
+// function range(start, end){
+//     let arr = [];
+//     for (let i = start; i< end; i+=0.1){
+//         arr.push(i)
+//     }
+//     return arr
+// }
 
 svg.append("g")
     .attr("class", "axis") //Assign "axis" class
-    .attr("transform", "translate(3, 470)")
+    .attr("transform", "translate(0, 480)")
     .call(xAxis)
+    //  xAxis.ticks(20)
     // createVisualization();
 
-body.append('div')
-    .attr("class", "divv")
-    .text("arrest")
+// body.append('div')
+//     .attr("class", "divv")
+//     .text("arrest")
+
+
+
+const positions = ["QB", "WR", "TE", "RB"]
+
+let dropdownButton = d3.select("ddbutton")
+    .selectAll('options')
+    .data(positions)
+    .enter()
+    .append('option')
+    .text(function (d) {return d} )
+    .attr('value', function (d) {return d})
+
+dropdownButton.on("change", function(d){
+    const selectedOption = d3.select(this).property('value')
+    createVisualization(selectedOption)
+})
+
+var button = svg.append('button')
+    .attr('class', 'ddbutton')
+
+var button = svg.append('button')
+  .selectAll(".ddbutton")
+  .data(positions)
+  .enter()
+  .append("g")
+  .attr("class", "button")
+  .call(button);
