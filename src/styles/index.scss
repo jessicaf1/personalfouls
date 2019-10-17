@@ -39,13 +39,15 @@ body {
     margin-top: 16px;
     width: 500px;
     text-align: center;
+    opacity: .8;
 }
 
 #image {
     width: 50px;
     height: 36px;
-    margin-left: 5px;
-    margin-top: 15px;
+    margin-left: 0px;
+    margin-top: 16px;
+    opacity: .8;
 }
 
 #h {
@@ -63,6 +65,7 @@ body {
     background: white;
     width: 900px;
     text-align: center;
+    opacity: .8
 }
 
 .button-all, .button-t {
@@ -113,36 +116,40 @@ body {
     padding: 8px;
     width: 320px;
     text-align: center;
+    opacity: .8;
 }
 
 .dropbtn {
     background-color: white;
     font-family: 'Courier New', Courier, monospace;
     color: green;
-    padding: 14px;
+    padding: 6px;
     font-size: 14px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0.1, 0.2);
     border: none;
     border-radius: 8px;
+    height: 28px;
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
     margin-left: 6px;
+    
+  
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 60px;
+    min-width: 80px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 6;
     border-radius: 4px;
-    height: 200px;
+    height: 150px;
+    opacity: 1; 
     overflow: scroll;
-    ;
 }
 
 .dropdown-content button {
@@ -161,6 +168,7 @@ body {
 
 .dropdown-content button:hover {
     background-color: rgba(0, 128, 0, .4);
+    height: 40px; 
 }
 
 .dropdown:hover .dropdown-content {
@@ -182,7 +190,8 @@ body {
 }
 
 body {
-    background-image: url("/src/styles/bandw.png");
+    background-image: url("/src/styles/stripe.jpg");
+    height: 100%;
 }
 
 .d {
@@ -248,16 +257,54 @@ body {
     display: flex;
 }
 
-.sp {
-    position: absolute;
-    bottom: 33px; 
-    left: 360px;
-}
 
 .dropdowns {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-left: 30px;
     margin-bottom: 200px;
+}
+
+#lds-circle {
+  display: inline-block;
+  transform: translateZ(1px);
+}
+#lds-circle > div {
+    position: absolute;
+    top: 200px;
+    left: 397px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  opacity: .8;
+  border-radius: 50%;
+  background: #fff;
+  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+@keyframes lds-circle {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(1800deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    transform: rotateY(3600deg);
+  }
+}
+
+.hidden {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+#buttonbh, #buttonbd {
+    width: 100px;
 }

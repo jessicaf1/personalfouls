@@ -55,8 +55,13 @@ fetch("http://nflarrest.com/api/v1/player")
                     })
                     player["crimes"] = arrests
                     debugger
-                    loading = false; 
+                    
                         createVisualization();
+                        loading = false;
+                        document
+                          .getElementById("lds-circle")
+                          .classList.add("hidden");
+
                     // console.log(player)
                 //   return console.log(data);
         
@@ -64,7 +69,8 @@ fetch("http://nflarrest.com/api/v1/player")
               });
             });
 
-        
+
+
 //createLoading function if loading is true 
 
             console.log(data);
@@ -466,16 +472,16 @@ var i;
  let arrest; 
 for (i = 0; i < x.length; i++) {
     x[i].addEventListener("click", function(d) {
-  let arr = ['QB', 'RB', 'WR', 'TE', 'K','All'];
+  let arr = ['QB', 'RB', 'WR', 'TE', 'K','All Positions'];
   let arr2 = ["49ers", "Bears", "Bengals", "Bills", "Broncos", "Browns",
    "Buccaneers", "Cardinals", "Chargers", "Chiefs", "Colts", 
    "Cowboys", "Dolphins", "Eagles", "Falcons", "Giants", "Lions", "Jaguars",
    "Jets", "Packers", "Panthers", "Patriots", "Raiders", "Rams", "Ravens",
-   "Redskins", "Saints", "Seahawks", "Steelers", "Texans", "Titans", "Vikings"];
+   "Redskins", "Saints", "Seahawks", "Steelers", "Texans", "Titans", "Vikings", "All Teams"];
  
   if (arr.includes(d.target.innerText)){
       debugger
-    if (d.target.innerText !== 'All'){
+    if (d.target.innerText !== 'All Positions'){
         position = d.target.innerText
     }
     else {
@@ -485,7 +491,7 @@ for (i = 0; i < x.length; i++) {
   
     if (arr2.includes(d.target.innerText)) {
       debugger;
-      if (d.target.innerText !== "All") {
+      if (d.target.innerText !== "All Teams") {
         team = d.target.innerText;
       } else {
         team = ""
@@ -493,9 +499,12 @@ for (i = 0; i < x.length; i++) {
     }
   
   if (!arr.includes(d.target.innerText) && !arr2.includes(d.target.innerText))  {
+      debugger
       if (d.target.innerText !== "All") {
+          debugger
         arrest = d.target.innerText;
       } else {
+          debugger
         arrest = ""
       }
   }
@@ -503,3 +512,4 @@ for (i = 0; i < x.length; i++) {
   createVisualization(position, team, arrest);
 });
 }
+
