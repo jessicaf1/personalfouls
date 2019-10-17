@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
 let arr;
 let arr2;
 let arrestArr;
+let loading = true; 
 fetch("http://nflarrest.com/api/v1/player")
     .then(function(response) {
        
@@ -30,12 +31,13 @@ fetch("http://nflarrest.com/api/v1/player")
             arr2 = arr.filter(player => player.Position === 'WR' ||
                 player.Position === 'QB' ||
                 player.Position === 'RB' ||
-                player.Position === 'TE')
-            debugger
+                player.Position === 'TE' ||
+                player.Position === 'K')
+            
 
 
             arr2.map(player => {
-              debugger;
+            //   debugger;
 
                 let name = player.Name.split(" ");
                 let fname = name[0];
@@ -47,8 +49,14 @@ fetch("http://nflarrest.com/api/v1/player")
               ).then(function(response) {
                 response.json().then(function(data) {
                     arrestArr = Object.values(data);
-                    player["crimes"] = arrestArr
+                    let arrests = [];
+                    arrestArr.forEach(arrest=> {
+                        arrests.push(arrest.category) + ""
+                    })
+                    player["crimes"] = arrests
                     debugger
+                    loading = false; 
+                        createVisualization();
                     // console.log(player)
                 //   return console.log(data);
         
@@ -56,7 +64,8 @@ fetch("http://nflarrest.com/api/v1/player")
               });
             });
 
-            createVisualization();
+        
+//createLoading function if loading is true 
 
             console.log(data);
             //   console.log(data.map(player => player.Position)) 
@@ -231,7 +240,7 @@ var yScale = d3.scaleLinear()
 
 
 
-function createVisualization(position = "", team = "") {
+function createVisualization(position = "", team = "", arrest = "") {
     debugger
     svg.selectAll("circle").remove();
     svg
@@ -251,7 +260,7 @@ function createVisualization(position = "", team = "") {
                 console.log(arr2)
                 // console.log(d.Position, position)
                 debugger
-                if (d.Position.includes(position) && d.Team_name.includes(team)){
+                if (d.Position.includes(position) && d.Team_name.includes(team) && d.crimes.toString().includes(arrest)){
                     debugger
                     return true 
                 }
@@ -294,6 +303,9 @@ function createVisualization(position = "", team = "") {
             } else if (d.Position === "TE") {
                 return "gray";
             }
+            else if (d.Position === 'K') {
+                return 'purple'
+            }
         })
         .on("mouseover", function(d) {
             return tooltip
@@ -307,7 +319,7 @@ function createVisualization(position = "", team = "") {
                 .style("top", event.pageY - 10 + "px")
                 .style("left", event.pageX + 10 + "px")
                 .text(
-                    d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
+                    d.Name + ", " + d.Position + " - " + d.arrest_count + " arrests (" +d.crimes + ")"
                 );
         })
         .on("mouseout", function(d) {
@@ -324,12 +336,13 @@ const tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("font-family", "sans-serif")
-    .style("font-size", "16x")
+    .style("font-size", "14px")
     .style("font-family", "courier")
     .style("z-index", "90")
     .style("color", "crimson")
     .style("border", "white")
-    .style("visibility", "hidden");
+    .style("visibility", "hidden")
+    .style("width", "100px")
 
 
 
@@ -448,12 +461,20 @@ svg.append("g")
 
 var x = document.getElementsByClassName("button-t");
 var i;
+ let position;
+ let team;
+ let arrest; 
 for (i = 0; i < x.length; i++) {
     x[i].addEventListener("click", function(d) {
-  let arr = ['QB', 'RB', 'WR', 'TE', 'All'];
-  let position;
-  let team; 
+  let arr = ['QB', 'RB', 'WR', 'TE', 'K','All'];
+  let arr2 = ["49ers", "Bears", "Bengals", "Bills", "Broncos", "Browns",
+   "Buccaneers", "Cardinals", "Chargers", "Chiefs", "Colts", 
+   "Cowboys", "Dolphins", "Eagles", "Falcons", "Giants", "Lions", "Jaguars",
+   "Jets", "Packers", "Panthers", "Patriots", "Raiders", "Rams", "Ravens",
+   "Redskins", "Saints", "Seahawks", "Steelers", "Texans", "Titans", "Vikings"];
+ 
   if (arr.includes(d.target.innerText)){
+      debugger
     if (d.target.innerText !== 'All'){
         position = d.target.innerText
     }
@@ -461,9 +482,24 @@ for (i = 0; i < x.length; i++) {
         position = ""
     }
   }
-  else {
-    team = d.target.innerText
+  
+    if (arr2.includes(d.target.innerText)) {
+      debugger;
+      if (d.target.innerText !== "All") {
+        team = d.target.innerText;
+      } else {
+        team = ""
+      }
+    }
+  
+  if (!arr.includes(d.target.innerText) && !arr2.includes(d.target.innerText))  {
+      if (d.target.innerText !== "All") {
+        arrest = d.target.innerText;
+      } else {
+        arrest = ""
+      }
   }
-  createVisualization(position, team);
+  debugger
+  createVisualization(position, team, arrest);
 });
 }

@@ -186,48 +186,78 @@ body {
 }
 
 .d {
-    width: 3px;
-    height: 3px;
+    width: 1px;
+    height: 1px;
     background: blue;
-    padding: 10px;
+    padding: 5px;
     margin-left: 2px;
-    border-radius: 4px;
+    border-radius: 2px; 
+     border: 1px solid gray; border: 1px solid gray; 
 }
 
 .d2 {
-    width: 3px;
-    height: 3px;
+    width: 1px;
+    height: 1px;
     background: white;
-    padding: 10px;
+    padding: 5px;
     margin-left: 2px;
-    border-radius: 4px;
+    border-radius: 2px;
+    border: 1px solid gray; 
 }
 
 .d3 {
-    width: 3px;
-    height: 3px;
+    width: 1px;
+    height: 1px;
     background: red;
-    padding: 10px;
+    padding: 5px;
     margin-left: 2px;
-    border-radius: 4px;
+    border-radius: 2px;
+     border: 1px solid gray; 
 }
 
 .d4 {
-    width: 3px;
-    height: 3px;
+    width: 1px;
+    height: 1px;
     background: gray;
-    padding: 10px;
+    padding: 5px;
     margin-left: 2px;
-    border-radius: 4px;
+    border-radius: 2px;
+     border: 1px solid gray; 
 }
 
+.d5 {
+    width: 1px;
+    height: 1px;
+    background: purple;
+    padding: 5px;
+    margin-left: 2px;
+    border-radius: 2px;
+     border: 1px solid gray; 
+}
+
+
 .t {
-    font-size: 14px;
+    font-size: 10px;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
-    color: red;
+    color: gray;
+    text-align: center;
 }
 
 #key {
     display: flex;
+}
+
+.sp {
+    position: absolute;
+    bottom: 33px; 
+    left: 360px;
+}
+
+.dropdowns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-bottom: 200px;
 }
