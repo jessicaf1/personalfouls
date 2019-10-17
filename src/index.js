@@ -49,23 +49,23 @@ var svg = d3.select('svg')
     .attr('class', 'svg-container')
 
 var line = svg
-  .append("line")
-  .attr("x1", 10)
-  .attr("x2", 10)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.8");
+    .append("line")
+    .attr("x1", 10)
+    .attr("x2", 10)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.8");
 
 
 svg
-  .append("line")
-  .attr("x1", 100)
-  .attr("x2", 100)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.0");
+    .append("line")
+    .attr("x1", 100)
+    .attr("x2", 100)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.0");
 
 // svg.append('circle')
 //     .attr('cx', 400)
@@ -75,78 +75,78 @@ svg
 //     .attr('stroke', 'white')
 
 svg
-  .append("line")
-  .attr("x1", 220)
-  .attr("x2", 220)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.0");
+    .append("line")
+    .attr("x1", 220)
+    .attr("x2", 220)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.0");
 
 svg
-  .append("line")
-  .attr("x1", 310)
-  .attr("x2", 310)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.0");
+    .append("line")
+    .attr("x1", 310)
+    .attr("x2", 310)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.0");
 
 svg
-  .append("line")
-  .attr("x1", 400)
-  .attr("x2", 400)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.0");
+    .append("line")
+    .attr("x1", 400)
+    .attr("x2", 400)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.0");
 
 svg
-  .append("line")
-  .attr("x1", 498)
-  .attr("x2", 498)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.0");
+    .append("line")
+    .attr("x1", 498)
+    .attr("x2", 498)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.0");
 
 svg
-  .append("line")
-  .attr("x1", 596)
-  .attr("x2", 596)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.0");
+    .append("line")
+    .attr("x1", 596)
+    .attr("x2", 596)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.0");
 
 svg
-  .append("line")
-  .attr("x1", 694)
-  .attr("x2", 694)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.0");
+    .append("line")
+    .attr("x1", 694)
+    .attr("x2", 694)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.0");
 
 svg
-  .append("line")
-  .attr("x1", 792)
-  .attr("x2", 792)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.0");
+    .append("line")
+    .attr("x1", 792)
+    .attr("x2", 792)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.0");
 
 svg
-  .append("line")
-  .attr("x1", 890)
-  .attr("x2", 890)
-  .attr("y1", 10)
-  .attr("y2", 480)
-  .attr("stroke", "white")
-  .attr("stroke-width", "2.8");
+    .append("line")
+    .attr("x1", 890)
+    .attr("x2", 890)
+    .attr("y1", 10)
+    .attr("y2", 480)
+    .attr("stroke", "white")
+    .attr("stroke-width", "2.8");
 
-  svg
+svg
     .append("line")
     .attr("x1", 9)
     .attr("x2", 891)
@@ -198,8 +198,8 @@ svg
 var xScale = d3.scaleLinear()
     .domain([0, 20])
     .range([0, 2200]);
-    // .domain([0, d3.max(data)])
-    // .range([300, 0])
+// .domain([0, d3.max(data)])
+// .range([300, 0])
 var yScale = d3.scaleLinear()
     .domain([0, 20])
     .range([0, 400]);
@@ -207,77 +207,76 @@ var yScale = d3.scaleLinear()
 
 
 function createVisualization(position = "WR") {
-    debugger 
+    debugger
     svg.selectAll("circle").remove();
     svg
-      .selectAll("circle")
-      // debugger
-      .data(
-        arr2.filter(function(d) {
-            // debugger
-            if(position === 'All'){
+        .selectAll("circle")
+        // debugger
+        .data(
+            arr2.filter(function(d) {
                 // debugger
-                return true 
-            }
-            else {
-                debugger
-          //return true if position === 'All'  
-            return d.Position === position;
-            } 
-        })
-      )
-      .enter()
-      .append("circle")
+                if (position === 'All') {
+                    // debugger
+                    return true
+                } else {
+                    debugger
+                    //return true if position === 'All'  
+                    return d.Position === position;
+                }
+            })
+        )
+        .enter()
+        .append("circle")
 
-      .attr("cx", function(d) {
-        return xScale(parseInt(d.arrest_count));
-      })
-      .attr("cy", function(d) {
-        // return yScale(parseInt(d.Name.length));
-        return yScale(getRando(2, 22));
-      })
-      .attr("class", "dots")
-      .attr("r", 8)
-      .attr("opacity", function(d) {
-        if (parseInt(d.arrest_count) <= 2) {
-          return 0.5;
-        } else if (parseInt(d.arrest_count) === 3) {
-          return 0.7;
-        } else if (parseInt(d.arrest_count) === 4) {
-          return 0.8;
-        } else {
-          return 1;
-        }
-      })
-      .attr("fill", function(d) {
-        if (d.Position === "WR") {
-          return "white";
-        } else if (d.Position === "RB") {
-          return "blue";
-        } else if (d.Position === "QB") {
-          return "orange";
-        } else if (d.Position === "TE") {
-          return "yellow";
-        }
-      })
-      .on("mouseover", function(d) {
-        return tooltip
-          .style("visibility", "visible")
-          .text(
-            d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
-          );
-      })
-      .on("mousemove", function(d) {
-        return tooltip
-          .style("top", event.pageY - 10 + "px")
-          .style("left", event.pageX + 10 + "px")
-          .text(
-            d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
-          );
-      })
-      .on("mouseout", function(d) {
-        return tooltip.style("visibility", "hidden");
-      });
+    .attr("cx", function(d) {
+            return xScale(parseInt(d.arrest_count));
+        })
+        .attr("cy", function(d) {
+            // return yScale(parseInt(d.Name.length));
+            return yScale(getRando(2, 22));
+        })
+        .attr("class", "dots")
+        .attr("r", 8)
+        .attr("opacity", function(d) {
+            if (parseInt(d.arrest_count) <= 2) {
+                return 0.5;
+            } else if (parseInt(d.arrest_count) === 3) {
+                return 0.7;
+            } else if (parseInt(d.arrest_count) === 4) {
+                return 0.8;
+            } else {
+                return 1;
+            }
+        })
+        .attr("fill", function(d) {
+            if (d.Position === "WR") {
+                return "white";
+            } else if (d.Position === "RB") {
+                return "blue";
+            } else if (d.Position === "QB") {
+                return "red";
+            } else if (d.Position === "TE") {
+                return "gray";
+            }
+        })
+        .on("mouseover", function(d) {
+            return tooltip
+                .style("visibility", "visible")
+                .text(
+                    d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
+                );
+        })
+        .on("mousemove", function(d) {
+            return tooltip
+                .style("top", event.pageY - 10 + "px")
+                .style("left", event.pageX + 10 + "px")
+                .text(
+                    d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
+                );
+        })
+        .on("mouseout", function(d) {
+            return tooltip.style("visibility", "hidden");
+        });
     debugger
 }
 
@@ -289,39 +288,39 @@ const tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("font-family", "sans-serif")
-    .style("font-size", "12px")
-    .style("font-weight", "bold")
+    .style("font-size", "16x")
+    .style("font-family", "courier")
     .style("z-index", "90")
-    .style("color", "	#8B0000")
+    .style("color", "crimson")
     .style("border", "white")
     .style("visibility", "hidden");
 
 
 
 var xAxis = d3
-  .axisBottom()
-  .scale(xScale)
-  // .ticks(20)
-//   .tickArguments([10], "|")
+    .axisBottom()
+    .scale(xScale)
+    // .ticks(20)
+    //   .tickArguments([10], "|")
 
-  .tickSize([9])
-//   .tickSizeOuter([10])
-  // .orient("bottom")
-  // .ticks(50)
-  // .tickFormat(x=>)
-  // .style("stroke", "pink")
-  // .style("z-index", 100)
-  //.tickValues([range(0, 8)])
-  .tickValues([ .1, .2, .3, .4, .5, .6, .7, .8, .9, 
-    1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 
-    2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 
-    3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 
-    4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0,
-    5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9,
-    6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7.0,
-    7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1
-]);
-      xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
+.tickSize([9])
+    //   .tickSizeOuter([10])
+    // .orient("bottom")
+    // .ticks(50)
+    // .tickFormat(x=>)
+    // .style("stroke", "pink")
+    // .style("z-index", 100)
+    //.tickValues([range(0, 8)])
+    .tickValues([.1, .2, .3, .4, .5, .6, .7, .8, .9,
+        1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9,
+        2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9,
+        3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9,
+        4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0,
+        5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9,
+        6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7.0,
+        7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1
+    ]);
+xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
 
 // function range(start, end){
 //     let arr = [];
@@ -342,28 +341,28 @@ svg.append("g")
 //     .attr("class", "divv")
 //     .text("arrest")
 debugger
-document.getElementById('button1').addEventListener('click', function(d){
+document.getElementById('button1').addEventListener('click', function(d) {
     debugger
     createVisualization(d.target.innerText)
 })
 document.getElementById("button2").addEventListener("click", function(d) {
     debugger
-  createVisualization(d.target.innerText);
+    createVisualization(d.target.innerText);
 });
 
 document.getElementById("button3").addEventListener("click", function(d) {
-  debugger;
-  createVisualization(d.target.innerText);
+    debugger;
+    createVisualization(d.target.innerText);
 });
 
 document.getElementById("button4").addEventListener("click", function(d) {
-  debugger;
-  createVisualization(d.target.innerText);
+    debugger;
+    createVisualization(d.target.innerText);
 });
 
 document.getElementById("button5").addEventListener("click", function(d) {
-  debugger;
-  createVisualization(d.target.innerText);
+    debugger;
+    createVisualization(d.target.innerText);
 });
 
 // const positions = ["QB", "WR", "TE", "RB"]
@@ -394,12 +393,12 @@ document.getElementById("button5").addEventListener("click", function(d) {
 debugger
 arr2.map(player => {
     debugger
- 
-  fetch(`http://nflarrest.com/api/v1/player/topCrimes/${player}.Name`).then(
-    function(response) {
-      response.json().then(function(data) {
-        return console.log(data);
-      });
-    }
-  );
+
+    fetch(`http://nflarrest.com/api/v1/player/topCrimes/${player}.Name`).then(
+        function(response) {
+            response.json().then(function(data) {
+                return console.log(data);
+            });
+        }
+    );
 });

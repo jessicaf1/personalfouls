@@ -1,6 +1,5 @@
 body {
     background-color: white;
-
     color: green;
 }
 
@@ -21,29 +20,32 @@ body {
     color: red;
 }
 
-
 .axis path {
     fill: none;
-    stroke: white; 
+    stroke: white;
     stroke-width: 2.4px;
 }
+
 .axis line {
     fill: none;
-    stroke: white; 
+    stroke: white;
     stroke-width: 1.4px;
 }
 
 #header {
     color: green;
     font-family: 'Courier New', Courier, monospace;
-
+    background: white;
+    margin-top: 16px;
+    width: 500px;
+    text-align: center;
 }
 
 #image {
-   width: 50px;
-   height: 40px;
-   margin-left: 12px;
-   margin-top: 14px; 
+    width: 50px;
+    height: 36px;
+    margin-left: 5px;
+    margin-top: 15px;
 }
 
 #h {
@@ -53,22 +55,27 @@ body {
 
 .foot {
     color: green;
-    font-weight: bold; 
+    font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
-    margin-left: 360px;
-    margin-top: 3px;
+    font-size: 22px;
+    margin-left: 0px;
+    margin-top: 0px;
+    background: white;
+    width: 900px;
+    text-align: center;
 }
 
 .button-all {
-    width: 50px;
+    width: 65px;
     background: white;
     border-radius: 5px;
     color: green;
     height: 50px;
     border: none;
-    font-weight: bold; 
+    font-weight: bold;
     margin-left: 10px;
 }
+
 .button-all:hover {
     background: darkgreen;
 }
@@ -83,8 +90,9 @@ body {
 }
 
 #button-header {
-    margin-left: 3px;;
-    font-size: 12px; 
+    margin-left: 3px;
+    ;
+    font-size: 12px;
     margin-top: 18px;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -92,19 +100,24 @@ body {
 #subHeader {
     font-size: 12px;
     font-family: 'Courier New', Courier, monospace;
-    margin-left: 30px;
-    margin-top: 32px; 
+    margin-left: 0px;
+    margin-top: 16px;
+    background: white;
+    height: 21px;
+    padding: 8px;
+    width: 320px;
+    text-align: center;
 }
 
 .dropbtn {
-  background-color: white;
-  font-family: 'Courier New', Courier, monospace;
-  color: green;
-  padding: 14px;
-  font-size: 14px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0.1,0.2);
-  border: none;
-  border-radius: 8px;
+    background-color: white;
+    font-family: 'Courier New', Courier, monospace;
+    color: green;
+    padding: 14px;
+    font-size: 14px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0.1, 0.2);
+    border: none;
+    border-radius: 8px;
 }
 
 .dropdown {
@@ -114,28 +127,88 @@ body {
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 80px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  border-radius: 4px;;
-
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+    ;
 }
 
 .dropdown-content button {
-  color: green;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: green;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
-.dropdown-content button:hover {background-color:rgba(0, 128, 0, .4);}
-.dropdown:hover .dropdown-content {display: block;}
-.dropdown:hover .dropbtn {background-color: rgba(0, 128, 0, .4);}
+.dropdown-content button:hover {
+    background-color: rgba(0, 128, 0, .4);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgba(0, 128, 0, .4);
+}
 
 .DD {
     margin-left: 800px;
     top: 0;
+}
+
+#image2 {
+    width: 40px;
+    float: right;
+}
+
+body {
+    background-image: url("/src/styles/bandw.png");
+}
+
+.d {
+    width: 3px;
+    height: 3px;
+    background: blue;
+    padding: 10px;
+    margin-left: 2px;
+    border-radius: 4px;
+}
+
+.d2 {
+    width: 3px;
+    height: 3px;
+    background: white;
+    padding: 10px;
+    margin-left: 2px;
+    border-radius: 4px;
+}
+
+.d3 {
+    width: 3px;
+    height: 3px;
+    background: red;
+    padding: 10px;
+    margin-left: 2px;
+    border-radius: 4px;
+}
+
+.d4 {
+    width: 3px;
+    height: 3px;
+    background: gray;
+    padding: 10px;
+    margin-left: 2px;
+    border-radius: 4px;
+}
+
+.t {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: red;
 }
