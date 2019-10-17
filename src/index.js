@@ -13,9 +13,10 @@ window.addEventListener('DOMContentLoaded', () => {
 // });
 let arr;
 let arr2;
+let arrestArr;
 fetch("http://nflarrest.com/api/v1/player")
     .then(function(response) {
-        //   debugger
+       
         if (response.status !== 200) {
 
             console.log(
@@ -31,6 +32,30 @@ fetch("http://nflarrest.com/api/v1/player")
                 player.Position === 'RB' ||
                 player.Position === 'TE')
             debugger
+
+
+            arr2.map(player => {
+              debugger;
+
+                let name = player.Name.split(" ");
+                let fname = name[0];
+                let lname = name[1];
+                console.log(fname, lname);
+
+              fetch(
+                `http://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
+              ).then(function(response) {
+                response.json().then(function(data) {
+                    arrestArr = Object.values(data);
+                    player["crimes"] = arrestArr
+                    debugger
+                    // console.log(player)
+                //   return console.log(data);
+        
+                });
+              });
+            });
+
             createVisualization();
 
             console.log(data);
@@ -206,7 +231,7 @@ var yScale = d3.scaleLinear()
 
 
 
-function createVisualization(position = "WR") {
+function createVisualization(position = "", team = "") {
     debugger
     svg.selectAll("circle").remove();
     svg
@@ -215,13 +240,24 @@ function createVisualization(position = "WR") {
         .data(
             arr2.filter(function(d) {
                 // debugger
-                if (position === 'All') {
-                    // debugger
-                    return true
-                } else {
+                // if (position === 'All') {
+                //     // debugger
+                //     return true
+                // } else {
+                //     debugger
+                //     //return true if position === 'All'  
+                //     return d.Position === position;
+                // }
+                console.log(arr2)
+                // console.log(d.Position, position)
+                debugger
+                if (d.Position.includes(position) && d.Team_name.includes(team)){
                     debugger
-                    //return true if position === 'All'  
-                    return d.Position === position;
+                    return true 
+                }
+                else {
+                    debugger
+                    return false 
                 }
             })
         )
@@ -340,30 +376,33 @@ svg.append("g")
 // body.append('div')
 //     .attr("class", "divv")
 //     .text("arrest")
-debugger
-document.getElementById('button1').addEventListener('click', function(d) {
-    debugger
-    createVisualization(d.target.innerText)
-})
-document.getElementById("button2").addEventListener("click", function(d) {
-    debugger
-    createVisualization(d.target.innerText);
-});
+// debugger
+// document.getElementById('button1').addEventListener('click', function(d) {
+//     debugger
+//     createVisualization(d.target.innerText)
+// })
+// document.getElementById("button2").addEventListener("click", function(d) {
+//     debugger
+//     createVisualization(d.target.innerText);
+// });
 
-document.getElementById("button3").addEventListener("click", function(d) {
-    debugger;
-    createVisualization(d.target.innerText);
-});
+// document.getElementById("button3").addEventListener("click", function(d) {
+//     debugger;
+//     createVisualization(d.target.innerText);
+// });
 
-document.getElementById("button4").addEventListener("click", function(d) {
-    debugger;
-    createVisualization(d.target.innerText);
-});
+// document.getElementById("button4").addEventListener("click", function(d) {
+//     debugger;
+//     createVisualization(d.target.innerText);
+// });
 
-document.getElementById("button5").addEventListener("click", function(d) {
-    debugger;
-    createVisualization(d.target.innerText);
-});
+// document.getElementById("button5").addEventListener("click", function(d) {
+//     debugger;
+//     createVisualization(d.target.innerText);
+// });
+
+
+
 
 // const positions = ["QB", "WR", "TE", "RB"]
 // debugger
@@ -390,15 +429,41 @@ document.getElementById("button5").addEventListener("click", function(d) {
 //   .append("g")
 //   .attr("class", "button")
 //   .call(button);
-debugger
-arr2.map(player => {
-    debugger
 
-    fetch(`http://nflarrest.com/api/v1/player/topCrimes/${player}.Name`).then(
-        function(response) {
-            response.json().then(function(data) {
-                return console.log(data);
-            });
-        }
-    );
+// buttons
+
+// document.getElementsByClassName("button-t").addEventListener("click", function(d) {
+//   debugger;
+//   let arr = ['QB', 'RB', 'WR', 'TE', 'All'];
+//   let position;
+//   let team; 
+//   if (arr.includes(d.target.innerText)){
+//     position = d.target.innerText
+//   }
+//   else {
+//     team = d.target.innerText
+//   }
+//   createVisualization(position, team);
+// });
+
+var x = document.getElementsByClassName("button-t");
+var i;
+for (i = 0; i < x.length; i++) {
+    x[i].addEventListener("click", function(d) {
+  let arr = ['QB', 'RB', 'WR', 'TE', 'All'];
+  let position;
+  let team; 
+  if (arr.includes(d.target.innerText)){
+    if (d.target.innerText !== 'All'){
+        position = d.target.innerText
+    }
+    else {
+        position = ""
+    }
+  }
+  else {
+    team = d.target.innerText
+  }
+  createVisualization(position, team);
 });
+}
