@@ -69,7 +69,7 @@ body {
 }
 
 .button-all, .button-t {
-    width: 65px;
+    width: 75px;
     background: white;
     border-radius: 5px;
     color: green;
@@ -307,4 +307,33 @@ body {
 
 #buttonbh, #buttonbd {
     width: 100px;
+}
+
+.active-pos{
+   font-weight: bold;
+   color: red; 
+   border: 1px solid green; 
+}
+
+.active-t{
+   font-weight: bold;
+    border: 1px solid green; 
+}
+
+.active-a{
+   font-weight: bold;
+    border: 1px solid green; 
+}
+
+
+#reset{
+    font-family: 'Courier New', Courier, monospace;
+    width: 60px;
+    background: green;
+    border-radius: 4px;
+    color: white; 
+    margin-top: 5px;
+    margin-left: 6px;
+    height: 30px; 
+    font-size: 12px; 
 }

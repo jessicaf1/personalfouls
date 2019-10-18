@@ -331,8 +331,59 @@ function createVisualization(position = "", team = "", arrest = "") {
         .on("mouseout", function(d) {
             return tooltip.style("visibility", "hidden");
         });
+
+    // d3.select('#check').property("checked", false)
+    
+    // var y = document.getElementsByClassName('active')
+    // var i;
+    // for (i = 0; i < y.length; i++) {
+    //     debugger
+    //     document.getElementById(y[i].id).classList.remove('active')
+    // }
     debugger
 }
+
+
+
+
+    d3.select("#check").on("change",update);
+    // update();
+            
+      function check() {
+        document.getElementById('check').checked = true;
+      }
+      function uncheck() {
+        document.getElementById("check").removeAttribute('checked')
+        ;
+      }  
+
+	function update(){
+		if(d3.select("#check").property("checked")){
+            createVisualization(position="", team="", arrest="");
+            uncheck();
+        } 
+        else {
+           check()
+        }
+    } 	
+    debugger
+
+    document
+      .getElementById("reset")
+      .addEventListener("click", function(d) {
+          debugger
+        var y = document.getElementsByClassName("active-pos");
+        var z = document.getElementsByClassName("active-t");
+        var q = document.getElementsByClassName("active-a");
+
+        var i;
+        for (i = 0; i < y.length; i++) {
+          document.getElementById(y[i].id).classList.remove("active-pos");
+          document.getElementById(z[i].id).classList.remove("active-t");
+          document.getElementById(q[i].id).classList.remove("active-a");
+        }
+        createVisualization((position = ""), (team = ""), (arrest = ""));
+      });
 
 function getRando(min, max) {
     return Math.random() * (max - min) + min;
@@ -470,7 +521,9 @@ var i;
  let position;
  let team;
  let arrest; 
+
 for (i = 0; i < x.length; i++) {
+
     x[i].addEventListener("click", function(d) {
   let arr = ['QB', 'RB', 'WR', 'TE', 'K','All Positions'];
   let arr2 = ["49ers", "Bears", "Bengals", "Bills", "Broncos", "Browns",
@@ -478,11 +531,25 @@ for (i = 0; i < x.length; i++) {
    "Cowboys", "Dolphins", "Eagles", "Falcons", "Giants", "Lions", "Jaguars",
    "Jets", "Packers", "Panthers", "Patriots", "Raiders", "Rams", "Ravens",
    "Redskins", "Saints", "Seahawks", "Steelers", "Texans", "Titans", "Vikings", "All Teams"];
- 
+    
   if (arr.includes(d.target.innerText)){
+       debugger
+      if(document.getElementById(this.id).classList.contains('active-pos')){
+          document.getElementById(this.id).classList.remove("active-pos");
+      }
+      else {
+             var y = document.getElementsByClassName("active-pos");
+             var i;
+             for (i = 0; i < y.length; i++) {
+                 document.getElementById(y[i].id).classList.remove('active-pos')
+             }
+             document.getElementById(this.id).classList.add("active-pos");
+           } 
+           
       debugger
     if (d.target.innerText !== 'All Positions'){
         position = d.target.innerText
+        // position.classList.add('active')
     }
     else {
         position = ""
@@ -490,6 +557,16 @@ for (i = 0; i < x.length; i++) {
   }
   
     if (arr2.includes(d.target.innerText)) {
+         if (document.getElementById(this.id).classList.contains("active-t")) {
+           document.getElementById(this.id).classList.remove("active-t");
+         } else {
+           var y = document.getElementsByClassName("active-t");
+           var i;
+           for (i = 0; i < y.length; i++) {
+             document.getElementById(y[i].id).classList.remove("active-t");
+           }
+           document.getElementById(this.id).classList.add("active-t");
+         }
       debugger;
       if (d.target.innerText !== "All Teams") {
         team = d.target.innerText;
@@ -499,6 +576,16 @@ for (i = 0; i < x.length; i++) {
     }
   
   if (!arr.includes(d.target.innerText) && !arr2.includes(d.target.innerText))  {
+        if (document.getElementById(this.id).classList.contains("active-a")) {
+          document.getElementById(this.id).classList.remove("active-a");
+        } else {
+          var y = document.getElementsByClassName("active-a");
+          var i;
+          for (i = 0; i < y.length; i++) {
+            document.getElementById(y[i].id).classList.remove("active-a");
+          }
+          document.getElementById(this.id).classList.add("active-a");
+        }
       debugger
       if (d.target.innerText !== "All") {
           debugger
@@ -510,6 +597,7 @@ for (i = 0; i < x.length; i++) {
   }
   debugger
   createVisualization(position, team, arrest);
+  
 });
 }
 
