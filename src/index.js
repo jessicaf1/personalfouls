@@ -15,7 +15,7 @@ let arr;
 let arr2;
 let arrestArr;
 let loading = true; 
-fetch("http://nflarrest.com/api/v1/player")
+fetch("https://nflarrest.com/api/v1/player")
     .then(function(response) {
        
         if (response.status !== 200) {
@@ -45,7 +45,7 @@ fetch("http://nflarrest.com/api/v1/player")
                 console.log(fname, lname);
 
               fetch(
-                `http://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
+                `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
               ).then(function(response) {
                 response.json().then(function(data) {
                     arrestArr = Object.values(data);
