@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./dist/main.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Document</title>
 </head>
 
@@ -38,7 +39,7 @@
                 <div class="d5"></div>
                 &nbsp;
                 <div class="t">K</div>
-            </div><span class= "sp">Number of Arrests</span></div> 
+            </div><span class= "sp">Number of Arrests</span>&nbsp;<span id="sp-t">(hover for details)</span></div> 
         </div>
         <!-- <select id="dropdown">
         <option value="QB">QB</option>
@@ -101,20 +102,20 @@
         <div class="dropdown">
             <button class="dropbtn">filter by arrest type</button>
             <div class="dropdown-content" id="arrestdd">
-                <button class="button-all button-t" id="buttonba">All</button>
-                <button class="button-all button-t" id="buttonbhi">Alcohol</button>
-                <button class="button-all button-t" id="buttonbg">Assault</button>
-                <button class="button-all button-t" id="buttonbhi">Battery</button>
-                <button class="button-all button-t" id="buttonbh">Disorderly conduct</button>
-                <button class="button-all button-t" id="buttonbd">Domestic dispute</button>
-                <button class="button-all button-t" id="buttonbz">Domestic violence</button>
-                <button class="button-all button-t" id="buttonbf">Drugs</button>
-                <button class="button-all button-t" id="buttonbc">DUI</button>
-                <button class="button-all button-t" id="buttonbhi">Eluding police</button>
-                <button class="button-all button-t" id="buttonbe">Gun</button>               
-                <button class="button-all button-t" id="buttonbhi">Public intoxication</button>
-                <button class="button-all button-t" id="buttonbhj">Reckless Driving</button>
-                <button class="button-all button-t" id="buttonbd">Violating Court Order</button>
+                <button class="button-all button-t button-a" id="buttonba">All</button>
+                <button class="button-all button-t button-a" id="buttonbhi">Alcohol</button>
+                <button class="button-all button-t button-a" id="buttonbg">Assault</button>
+                <button class="button-all button-t button-a" id="buttonbhi">Battery</button>
+                <button class="button-all button-t button-a" id="buttonbh">Disorderly conduct</button>
+                <button class="button-all button-t button-a" id="buttonbd">Domestic dispute</button>
+                <button class="button-all button-t button-a" id="buttonbz">Domestic violence</button>
+                <button class="button-all button-t button-a" id="buttonbf">Drugs</button>
+                <button class="button-all button-t button-a" id="buttonbc">DUI</button>
+                <button class="button-all button-t button-a" id="buttonbhi">Eluding police</button>
+                <button class="button-all button-t button-a" id="buttonbe">Gun</button>               
+                <button class="button-all button-t button-a" id="buttonbhi">Public intoxication</button>
+                <button class="button-all button-t button-a" id="buttonbhj">Reckless Driving</button>
+                <button class="button-all button-t button-a" id="buttonbd">Violating Court Order</button>
             </div>
         </div>
    

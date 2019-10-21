@@ -251,6 +251,8 @@ function createVisualization(position = "", team = "", arrest = "") {
     svg.selectAll("circle").remove();
     svg
         .selectAll("circle")
+        // .transition()
+        // .duration(1000)
         // debugger
         .data(
             arr2.filter(function(d) {
@@ -313,6 +315,9 @@ function createVisualization(position = "", team = "", arrest = "") {
                 return 'purple'
             }
         })
+        // .on('click', function(d){
+        //     return "hello"
+        // })
         .on("mouseover", function(d) {
             return tooltip
                 .style("visibility", "visible")
@@ -346,26 +351,26 @@ function createVisualization(position = "", team = "", arrest = "") {
 
 
 
-    d3.select("#check").on("change",update);
-    // update();
+    // d3.select("#check").on("change",update);
+    // // update();
             
-      function check() {
-        document.getElementById('check').checked = true;
-      }
-      function uncheck() {
-        document.getElementById("check").removeAttribute('checked')
-        ;
-      }  
+    //   function check() {
+    //     document.getElementById('check').checked = true;
+    //   }
+    //   function uncheck() {
+    //     document.getElementById("check").removeAttribute('checked')
+    //     ;
+    //   }  
 
-	function update(){
-		if(d3.select("#check").property("checked")){
-            createVisualization(position="", team="", arrest="");
-            uncheck();
-        } 
-        else {
-           check()
-        }
-    } 	
+	// function update(){
+	// 	if(d3.select("#check").property("checked")){
+    //         createVisualization(position="", team="", arrest="");
+    //         uncheck();
+    //     } 
+    //     else {
+    //        check()
+    //     }
+    // } 	
     debugger
 
     document
