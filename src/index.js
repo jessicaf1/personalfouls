@@ -58,9 +58,10 @@ fetch("https://nflarrest.com/api/v1/player")
                     
                         createVisualization();
                         loading = false;
-                        document
-                          .getElementById("lds-circle")
-                          .classList.add("hidden");
+                                    document
+                                      .getElementById("lds-circle")
+                                      .classList.add("hidden");
+                                    debugger;
 
                     // console.log(player)
                 //   return console.log(data);
@@ -250,40 +251,47 @@ function createVisualization(position = "", team = "", arrest = "") {
     debugger
     svg.selectAll("circle").remove();
     svg
-        .selectAll("circle")
-        // .transition()
-        // .duration(1000)
-        // debugger
-        .data(
-            arr2.filter(function(d) {
-                // debugger
-                // if (position === 'All') {
-                //     // debugger
-                //     return true
-                // } else {
-                //     debugger
-                //     //return true if position === 'All'  
-                //     return d.Position === position;
-                // }
-                console.log(arr2)
-                // console.log(d.Position, position)
-                debugger
-                if (d.Position.includes(position) && d.Team_name.includes(team) && d.crimes.toString().includes(arrest)){
-                    debugger
-                    return true 
-                }
-                else {
-                    debugger
-                    return false 
-                }
-            })
-        )
-        .enter()
-        .append("circle")
-
-    .attr("cx", function(d) {
-            return xScale(parseInt(d.arrest_count));
+      .selectAll("circle")
+      // .transition()
+      // .duration(1000)
+      // debugger
+      .data(
+        arr2.filter(function(d) {
+          // debugger
+          // if (position === 'All') {
+          //     // debugger
+          //     return true
+          // } else {
+          //     debugger
+          //     //return true if position === 'All'
+          //     return d.Position === position;
+          // }
+          console.log(arr2);
+          // console.log(d.Position, position)
+          debugger;
+          if (
+            d.Position.includes(position) &&
+            d.Team_name.includes(team) &&
+            d.crimes.toString().includes(arrest)
+          ) {
+            debugger;
+            return true;
+          } else {
+            debugger;
+            return false;
+          }
         })
+      )
+      .enter()
+      .append("circle")
+
+      .transition()
+      .duration(2000)
+
+      .attr("cx", function(d) {
+          return xScale(parseInt(d.arrest_count));
+        })
+        
         .attr("cy", function(d) {
             // return yScale(parseInt(d.Name.length));
             return yScale(getRando(2, 22));
@@ -310,32 +318,39 @@ function createVisualization(position = "", team = "", arrest = "") {
                 return "red";
             } else if (d.Position === "TE") {
                 return "gray";
-            }
-            else if (d.Position === 'K') {
-                return 'purple'
+            } else if (d.Position === "K") {
+                return "purple";
             }
         })
         // .on('click', function(d){
-        //     return "hello"
-        // })
-        .on("mouseover", function(d) {
-            return tooltip
+            //     return "hello"
+            // })
+            .on("mouseover", function(d) {
+                return tooltip
                 .style("visibility", "visible")
                 .text(
                     d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
-                );
-        })
-        .on("mousemove", function(d) {
-            return tooltip
-                .style("top", event.pageY - 10 + "px")
-                .style("left", event.pageX + 10 + "px")
-                .text(
-                    d.Name + ", " + d.Position + " - " + d.arrest_count + " arrests (" +d.crimes + ")"
-                );
-        })
-        .on("mouseout", function(d) {
-            return tooltip.style("visibility", "hidden");
-        });
+                    );
+                })
+
+      .on("mousemove", function(d) {
+        return tooltip
+          .style("top", event.pageY - 10 + "px")
+          .style("left", event.pageX + 10 + "px")
+          .text(
+            d.Name +
+              ", " +
+              d.Position +
+              " - " +
+              d.arrest_count +
+              " arrests (" +
+              d.crimes +
+              ")"
+          );
+      })
+      .on("mouseout", function(d) {
+        return tooltip.style("visibility", "hidden");
+      });
 
     // d3.select('#check').property("checked", false)
     
@@ -345,11 +360,14 @@ function createVisualization(position = "", team = "", arrest = "") {
     //     debugger
     //     document.getElementById(y[i].id).classList.remove('active')
     // }
-    debugger
 }
 
-
-
+// svg.selectAll("circle")
+//     .transition()
+//     // .delay(function(d, i){return (i*3)})
+//     .duration(2000)
+//     .attr('cx', function(d) { return xScale(parseInt(d.arrest_count)) } )
+//     .attr('cy', function(d) { return yScale(getRando(2, 22)) } )
 
     // d3.select("#check").on("change",update);
     // // update();
@@ -439,12 +457,14 @@ xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
 //         arr.push(i)
 //     }
 //     return arr
-// }
+// // }
 
-svg.append("g")
-    .attr("class", "axis") //Assign "axis" class
-    .attr("transform", "translate(0, 480)")
-    .call(xAxis)
+// svg.append("g")
+//     .attr("class", "axis") //Assign "axis" class
+//     .attr("transform", "translate(0, 480)")
+//     .transition()
+//     .duration(2000)
+//     .call(xAxis)
     //  xAxis.ticks(20)
     // createVisualization();
 
