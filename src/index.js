@@ -35,7 +35,7 @@ fetch("https://nflarrest.com/api/v1/player")
                 player.Position === 'K')
             
 
-
+            let counter = 0
             arr2.map(player => {
             //   debugger;
 
@@ -47,20 +47,25 @@ fetch("https://nflarrest.com/api/v1/player")
               fetch(
                 `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
               ).then(function(response) {
+                counter++;
                 response.json().then(function(data) {
                     arrestArr = Object.values(data);
+                    
                     let arrests = [];
                     arrestArr.forEach(arrest=> {
                         arrests.push(arrest.category) + ""
                     })
                     player["crimes"] = arrests
                     debugger
+                    if (counter === 42){
+                       loading = false;
+                      document.getElementById("lds-circle")
+                      .classList.add("hidden");
+                    }
                     
                         createVisualization();
-                        loading = false;
-                                    document
-                                      .getElementById("lds-circle")
-                                      .classList.add("hidden");
+                       
+                                 
                                     debugger;
 
                     // console.log(player)
