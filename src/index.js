@@ -34,53 +34,102 @@ fetch("https://nflarrest.com/api/v1/player")
                 player.Position === 'TE' ||
                 player.Position === 'K')
             
+let counter = 0;
+arr2.map(player => {
+  //   debugger;
 
-            let counter = 0
-            arr2.map(player => {
+  let name = player.Name.split(" ");
+  let fname = name[0];
+  let lname = name[1];
+  console.log(fname, lname);
+
+  fetch(
+    `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
+  ).then(function(response) {
+    counter++;
+    response.json().then(function(data) {
+      arrestArr = Object.values(data);
+
+      let arrests = [];
+      arrestArr.forEach(arrest => {
+        arrests.push(arrest.category) + "";
+      });
+      player["crimes"] = arrests;
+      debugger;
+      if (counter === 42) {
+        loading = false;
+        document.getElementById("lds-circle").classList.add("hidden");
+      }
+
+      createVisualization();
+
+      debugger;
+
+      // console.log(player)
+      //   return console.log(data);
+    });
+  });
+});
+
+            // let counter = 0
+            
+            // const urls = arr2.map(player => {
+            //     let name = player.Name.split(" ");
+            //     let fname = name[0];
+            //     let lname = name[1];
+            //     return `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
+            // })
+            
+            
+            // Promise.all(urls.map(url =>
+            //   fetch(url)
+            //   .then(function(response) {
+            //   response.json().then(function(data) {
+            //   arrestArr = Object.values(data);
+                    
+            //         let arrests = [];
+            //         arrestArr.forEach(arrest=> {
+            //             arrests.push(arrest.category) + ""
+            //         })
+            //         player["crimes"] = arrests;
+            //         loading = false;
+            //         createVisualization()
+            //       });
+            //     }  
+            //   ))
+            //   )   
+            //   .then(data=>{
+            //     document
+            //       .getElementById("lds-circle")
+            //       .classList.add("hidden");
+            // })
+            // arr2.map(player => {
             //   debugger;
 
-                let name = player.Name.split(" ");
-                let fname = name[0];
-                let lname = name[1];
-                console.log(fname, lname);
+             
+                // console.log(fname, lname);
 
-              fetch(
-                `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
-              ).then(function(response) {
-                counter++;
-                response.json().then(function(data) {
-                    arrestArr = Object.values(data);
+              // fetch(
+              // ).then(
                     
-                    let arrests = [];
-                    arrestArr.forEach(arrest=> {
-                        arrests.push(arrest.category) + ""
-                    })
-                    player["crimes"] = arrests
-                    debugger
-                    if (counter === 42){
-                       loading = false;
-                      document.getElementById("lds-circle")
-                      .classList.add("hidden");
-                    }
-                    
-                        createVisualization();
-                       
+                      
+                     
                                  
-                                    debugger;
+                                 
 
                     // console.log(player)
                 //   return console.log(data);
         
-                });
-              });
-            });
+            //     });
+            //   });
+            // });
 
 
 
 //createLoading function if loading is true 
 
             console.log(data);
-            //   console.log(data.map(player => player.Position)) 
+              console.log(data.map(player => player.Position)) 
         });
     })
     .catch(function(err) {
@@ -255,7 +304,7 @@ var yScale = d3.scaleLinear()
 function createVisualization(position = "", team = "", arrest = "") {
     debugger
     svg.selectAll("circle").remove();
-    svg
+    var dots = svg
       .selectAll("circle")
       // .transition()
       // .duration(1000)
@@ -290,7 +339,7 @@ function createVisualization(position = "", team = "", arrest = "") {
       .enter()
       .append("circle")
 
-      .transition()
+      dots.transition()
       .duration(2000)
 
       .attr("cx", function(d) {
@@ -330,7 +379,7 @@ function createVisualization(position = "", team = "", arrest = "") {
         // .on('click', function(d){
             //     return "hello"
             // })
-            .on("mouseover", function(d) {
+            dots.on("mouseover", function(d) {
                 return tooltip
                 .style("visibility", "visible")
                 .text(
@@ -338,7 +387,7 @@ function createVisualization(position = "", team = "", arrest = "") {
                     );
                 })
 
-      .on("mousemove", function(d) {
+      dots.on("mousemove", function(d) {
         return tooltip
           .style("top", event.pageY - 10 + "px")
           .style("left", event.pageX + 10 + "px")
@@ -630,4 +679,4 @@ for (i = 0; i < x.length; i++) {
   
 });
 }
-
+      
