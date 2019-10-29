@@ -14,10 +14,10 @@ window.addEventListener('DOMContentLoaded', () => {
 let arr;
 let arr2;
 let arrestArr;
-let loading = true; 
+let loading = true;
 fetch("https://nflarrest.com/api/v1/player")
     .then(function(response) {
-       
+
         if (response.status !== 200) {
 
             console.log(
@@ -33,60 +33,60 @@ fetch("https://nflarrest.com/api/v1/player")
                 player.Position === 'RB' ||
                 player.Position === 'TE' ||
                 player.Position === 'K')
-            
-let counter = 0;
-arr2.map(player => {
-  //   debugger;
 
-  let name = player.Name.split(" ");
-  let fname = name[0];
-  let lname = name[1];
-  console.log(fname, lname);
+            let counter = 0;
+            arr2.map(player => {
+                //   debugger;
 
-  fetch(
-    `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
-  ).then(function(response) {
-    counter++;
-    response.json().then(function(data) {
-      arrestArr = Object.values(data);
+                let name = player.Name.split(" ");
+                let fname = name[0];
+                let lname = name[1];
+                console.log(fname, lname);
 
-      let arrests = [];
-      arrestArr.forEach(arrest => {
-        arrests.push(arrest.category) + "";
-      });
-      player["crimes"] = arrests;
-      debugger;
-      if (counter === 42) {
-        loading = false;
-        document.getElementById("lds-circle").classList.add("hidden");
-      }
+                fetch(
+                    `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
+                ).then(function(response) {
+                    counter++;
+                    response.json().then(function(data) {
+                        arrestArr = Object.values(data);
 
-      createVisualization();
+                        let arrests = [];
+                        arrestArr.forEach(arrest => {
+                            arrests.push(arrest.category) + "";
+                        });
+                        player["crimes"] = arrests;
+                        debugger;
+                        if (counter === 42) {
+                            loading = false;
+                            document.getElementById("lds-circle").classList.add("hidden");
+                        }
 
-      debugger;
+                        createVisualization();
 
-      // console.log(player)
-      //   return console.log(data);
-    });
-  });
-});
+                        debugger;
+
+                        // console.log(player)
+                        //   return console.log(data);
+                    });
+                });
+            });
 
             // let counter = 0
-            
+
             // const urls = arr2.map(player => {
             //     let name = player.Name.split(" ");
             //     let fname = name[0];
             //     let lname = name[1];
             //     return `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
             // })
-            
-            
+
+
             // Promise.all(urls.map(url =>
             //   fetch(url)
             //   .then(function(response) {
             //   response.json().then(function(data) {
             //   arrestArr = Object.values(data);
-                    
+
             //         let arrests = [];
             //         arrestArr.forEach(arrest=> {
             //             arrests.push(arrest.category) + ""
@@ -106,30 +106,30 @@ arr2.map(player => {
             // arr2.map(player => {
             //   debugger;
 
-             
-                // console.log(fname, lname);
 
-              // fetch(
-              // ).then(
-                    
-                      
-                     
-                                 
-                                 
+            // console.log(fname, lname);
 
-                    // console.log(player)
-                //   return console.log(data);
-        
+            // fetch(
+            // ).then(
+
+
+
+
+
+
+            // console.log(player)
+            //   return console.log(data);
+
             //     });
             //   });
             // });
 
 
 
-//createLoading function if loading is true 
+            //createLoading function if loading is true 
 
             console.log(data);
-              console.log(data.map(player => player.Position)) 
+            console.log(data.map(player => player.Position))
         });
     })
     .catch(function(err) {
@@ -303,50 +303,48 @@ var yScale = d3.scaleLinear()
 
 function createVisualization(position = "", team = "", arrest = "") {
     debugger
-    svg.selectAll("circle").remove();
-    var dots = svg
-      .selectAll("circle")
-      // .transition()
-      // .duration(1000)
-      // debugger
-      .data(
-        arr2.filter(function(d) {
-          // debugger
-          // if (position === 'All') {
-          //     // debugger
-          //     return true
-          // } else {
-          //     debugger
-          //     //return true if position === 'All'
-          //     return d.Position === position;
-          // }
-          console.log(arr2);
-          // console.log(d.Position, position)
-          debugger;
-          if (
+    const results = arr2.filter(function(d) {
+        console.log(arr2);
+        debugger;
+        if (
             d.Position.includes(position) &&
             d.Team_name.includes(team) &&
             d.crimes.toString().includes(arrest)
-          ) {
+        ) {
             debugger;
+
             return true;
-          } else {
+        } else {
             debugger;
             return false;
-          }
-        })
-      )
-      .enter()
-      .append("circle")
+        }
 
-      dots.transition()
-      .duration(2000)
+    })
+    if (results.length === 0) {
+        document.getElementById('results').classList.remove('hidden')
+    }
 
-      .attr("cx", function(d) {
-          return xScale(parseInt(d.arrest_count));
-        })
-        
-        .attr("cy", function(d) {
+    svg.selectAll("circle").remove();
+    var dots = svg
+        .selectAll("circle")
+        // .transition()
+        // .duration(1000)
+        // debugger
+        .data(
+            results
+        )
+
+    .enter()
+        .append("circle")
+
+    dots.transition()
+        .duration(2000)
+
+    .attr("cx", function(d) {
+        return xScale(parseInt(d.arrest_count));
+    })
+
+    .attr("cy", function(d) {
             // return yScale(parseInt(d.Name.length));
             return yScale(getRando(2, 22));
         })
@@ -377,37 +375,37 @@ function createVisualization(position = "", team = "", arrest = "") {
             }
         })
         // .on('click', function(d){
-            //     return "hello"
-            // })
-            dots.on("mouseover", function(d) {
-                return tooltip
-                .style("visibility", "visible")
-                .text(
-                    d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
-                    );
-                })
-
-      dots.on("mousemove", function(d) {
+        //     return "hello"
+        // })
+    dots.on("mouseover", function(d) {
         return tooltip
-          .style("top", event.pageY - 10 + "px")
-          .style("left", event.pageX + 10 + "px")
-          .text(
-            d.Name +
-              ", " +
-              d.Position +
-              " - " +
-              d.arrest_count +
-              " arrests (" +
-              d.crimes +
-              ")"
-          );
-      })
-      .on("mouseout", function(d) {
-        return tooltip.style("visibility", "hidden");
-      });
+            .style("visibility", "visible")
+            .text(
+                d.Name + ", " + d.Position + " : " + d.arrest_count + " arrests"
+            );
+    })
+
+    dots.on("mousemove", function(d) {
+            return tooltip
+                .style("top", event.pageY - 10 + "px")
+                .style("left", event.pageX + 10 + "px")
+                .text(
+                    d.Name +
+                    ", " +
+                    d.Position +
+                    " - " +
+                    d.arrest_count +
+                    " arrests (" +
+                    d.crimes +
+                    ")"
+                );
+        })
+        .on("mouseout", function(d) {
+            return tooltip.style("visibility", "hidden");
+        });
 
     // d3.select('#check').property("checked", false)
-    
+
     // var y = document.getElementsByClassName('active')
     // var i;
     // for (i = 0; i < y.length; i++) {
@@ -423,44 +421,45 @@ function createVisualization(position = "", team = "", arrest = "") {
 //     .attr('cx', function(d) { return xScale(parseInt(d.arrest_count)) } )
 //     .attr('cy', function(d) { return yScale(getRando(2, 22)) } )
 
-    // d3.select("#check").on("change",update);
-    // // update();
-            
-    //   function check() {
-    //     document.getElementById('check').checked = true;
-    //   }
-    //   function uncheck() {
-    //     document.getElementById("check").removeAttribute('checked')
-    //     ;
-    //   }  
+// d3.select("#check").on("change",update);
+// // update();
 
-	// function update(){
-	// 	if(d3.select("#check").property("checked")){
-    //         createVisualization(position="", team="", arrest="");
-    //         uncheck();
-    //     } 
-    //     else {
-    //        check()
-    //     }
-    // } 	
-    debugger
+//   function check() {
+//     document.getElementById('check').checked = true;
+//   }
+//   function uncheck() {
+//     document.getElementById("check").removeAttribute('checked')
+//     ;
+//   }  
 
-    document
-      .getElementById("reset")
-      .addEventListener("click", function(d) {
-          debugger
+// function update(){
+// 	if(d3.select("#check").property("checked")){
+//         createVisualization(position="", team="", arrest="");
+//         uncheck();
+//     } 
+//     else {
+//        check()
+//     }
+// } 	
+debugger
+
+document
+    .getElementById("reset")
+    .addEventListener("click", function(d) {
+        debugger
         var y = document.getElementsByClassName("active-pos");
         var z = document.getElementsByClassName("active-t");
         var q = document.getElementsByClassName("active-a");
 
         var i;
         for (i = 0; i < y.length; i++) {
-          document.getElementById(y[i].id).classList.remove("active-pos");
-          document.getElementById(z[i].id).classList.remove("active-t");
-          document.getElementById(q[i].id).classList.remove("active-a");
+            document.getElementById(y[i].id).classList.remove("active-pos");
+            document.getElementById(z[i].id).classList.remove("active-t");
+            document.getElementById(q[i].id).classList.remove("active-a");
+            document.getElementById('results').classList.add("hidden")
         }
         createVisualization((position = ""), (team = ""), (arrest = ""));
-      });
+    });
 
 function getRando(min, max) {
     return Math.random() * (max - min) + min;
@@ -519,8 +518,8 @@ xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
 //     .transition()
 //     .duration(2000)
 //     .call(xAxis)
-    //  xAxis.ticks(20)
-    // createVisualization();
+//  xAxis.ticks(20)
+// createVisualization();
 
 // body.append('div')
 //     .attr("class", "divv")
@@ -597,86 +596,84 @@ xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
 
 var x = document.getElementsByClassName("button-t");
 var i;
- let position;
- let team;
- let arrest; 
+let position;
+let team;
+let arrest;
 
 for (i = 0; i < x.length; i++) {
 
     x[i].addEventListener("click", function(d) {
-  let arr = ['QB', 'RB', 'WR', 'TE', 'K','All Positions'];
-  let arr2 = ["49ers", "Bears", "Bengals", "Bills", "Broncos", "Browns",
-   "Buccaneers", "Cardinals", "Chargers", "Chiefs", "Colts", 
-   "Cowboys", "Dolphins", "Eagles", "Falcons", "Giants", "Lions", "Jaguars",
-   "Jets", "Packers", "Panthers", "Patriots", "Raiders", "Rams", "Ravens",
-   "Redskins", "Saints", "Seahawks", "Steelers", "Texans", "Titans", "Vikings", "All Teams"];
-    
-  if (arr.includes(d.target.innerText)){
-       debugger
-      if(document.getElementById(this.id).classList.contains('active-pos')){
-          document.getElementById(this.id).classList.remove("active-pos");
-      }
-      else {
-             var y = document.getElementsByClassName("active-pos");
-             var i;
-             for (i = 0; i < y.length; i++) {
-                 document.getElementById(y[i].id).classList.remove('active-pos')
-             }
-             document.getElementById(this.id).classList.add("active-pos");
-           } 
-           
-      debugger
-    if (d.target.innerText !== 'All Positions'){
-        position = d.target.innerText
-        // position.classList.add('active')
-    }
-    else {
-        position = ""
-    }
-  }
-  
-    if (arr2.includes(d.target.innerText)) {
-         if (document.getElementById(this.id).classList.contains("active-t")) {
-           document.getElementById(this.id).classList.remove("active-t");
-         } else {
-           var y = document.getElementsByClassName("active-t");
-           var i;
-           for (i = 0; i < y.length; i++) {
-             document.getElementById(y[i].id).classList.remove("active-t");
-           }
-           document.getElementById(this.id).classList.add("active-t");
-         }
-      debugger;
-      if (d.target.innerText !== "All Teams") {
-        team = d.target.innerText;
-      } else {
-        team = ""
-      }
-    }
-  
-  if (!arr.includes(d.target.innerText) && !arr2.includes(d.target.innerText))  {
-        if (document.getElementById(this.id).classList.contains("active-a")) {
-          document.getElementById(this.id).classList.remove("active-a");
-        } else {
-          var y = document.getElementsByClassName("active-a");
-          var i;
-          for (i = 0; i < y.length; i++) {
-            document.getElementById(y[i].id).classList.remove("active-a");
-          }
-          document.getElementById(this.id).classList.add("active-a");
+        let arr = ['QB', 'RB', 'WR', 'TE', 'K', 'All Positions'];
+        let arr2 = ["49ers", "Bears", "Bengals", "Bills", "Broncos", "Browns",
+            "Buccaneers", "Cardinals", "Chargers", "Chiefs", "Colts",
+            "Cowboys", "Dolphins", "Eagles", "Falcons", "Giants", "Lions", "Jaguars",
+            "Jets", "Packers", "Panthers", "Patriots", "Raiders", "Rams", "Ravens",
+            "Redskins", "Saints", "Seahawks", "Steelers", "Texans", "Titans", "Vikings", "All Teams"
+        ];
+
+        if (arr.includes(d.target.innerText)) {
+            debugger
+            if (document.getElementById(this.id).classList.contains('active-pos')) {
+                document.getElementById(this.id).classList.remove("active-pos");
+            } else {
+                var y = document.getElementsByClassName("active-pos");
+                var i;
+                for (i = 0; i < y.length; i++) {
+                    document.getElementById(y[i].id).classList.remove('active-pos')
+                }
+                document.getElementById(this.id).classList.add("active-pos");
+            }
+
+            debugger
+            if (d.target.innerText !== 'All Positions') {
+                position = d.target.innerText
+                    // position.classList.add('active')
+            } else {
+                position = ""
+            }
         }
-      debugger
-      if (d.target.innerText !== "All") {
-          debugger
-        arrest = d.target.innerText;
-      } else {
-          debugger
-        arrest = ""
-      }
-  }
-  debugger
-  createVisualization(position, team, arrest);
-  
-});
+
+        if (arr2.includes(d.target.innerText)) {
+            if (document.getElementById(this.id).classList.contains("active-t")) {
+                document.getElementById(this.id).classList.remove("active-t");
+            } else {
+                var y = document.getElementsByClassName("active-t");
+                var i;
+                for (i = 0; i < y.length; i++) {
+                    document.getElementById(y[i].id).classList.remove("active-t");
+                }
+                document.getElementById(this.id).classList.add("active-t");
+            }
+            debugger;
+            if (d.target.innerText !== "All Teams") {
+                team = d.target.innerText;
+            } else {
+                team = ""
+            }
+        }
+
+        if (!arr.includes(d.target.innerText) && !arr2.includes(d.target.innerText)) {
+            if (document.getElementById(this.id).classList.contains("active-a")) {
+                document.getElementById(this.id).classList.remove("active-a");
+            } else {
+                var y = document.getElementsByClassName("active-a");
+                var i;
+                for (i = 0; i < y.length; i++) {
+                    document.getElementById(y[i].id).classList.remove("active-a");
+                }
+                document.getElementById(this.id).classList.add("active-a");
+            }
+            debugger
+            if (d.target.innerText !== "All") {
+                debugger
+                arrest = d.target.innerText;
+            } else {
+                debugger
+                arrest = ""
+            }
+        }
+        debugger
+        createVisualization(position, team, arrest);
+
+    });
 }
-      
