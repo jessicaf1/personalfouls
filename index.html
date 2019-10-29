@@ -9,6 +9,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Document</title>
+    <link rel="icon" href="src/styles/favicon-32x32.png">
 </head>
 
 <body>
@@ -19,27 +20,30 @@
     </div>
     <div class="page">
 
-<div id="lds-circle"><div></div></div>
+        <div id="lds-circle">
+            <div></div>
+        </div>
 
         <div class="page2">
             <svg></svg>
-            <div class="foot"><div id="key">
-                <div class="d"></div>
-                &nbsp;
-                <div class="t">RB</div>
-                <div class="d2"></div>
-                &nbsp;
-                <div class="t">WR</div>
-                <div class="d3"></div>
-                &nbsp;
-                <div class="t">QB</div>
-                <div class="d4"></div>
-                &nbsp;
-                <div class="t">TE</div>
-                <div class="d5"></div>
-                &nbsp;
-                <div class="t">K</div>
-            </div><span class= "sp">Number of Arrests</span>&nbsp;<span id="sp-t">(hover for details)</span></div> 
+            <div class="foot">
+                <div id="key">
+                    <div class="d"></div>
+                    &nbsp;
+                    <div class="t">RB</div>
+                    <div class="d2"></div>
+                    &nbsp;
+                    <div class="t">WR</div>
+                    <div class="d3"></div>
+                    &nbsp;
+                    <div class="t">QB</div>
+                    <div class="d4"></div>
+                    &nbsp;
+                    <div class="t">TE</div>
+                    <div class="d5"></div>
+                    &nbsp;
+                    <div class="t">K</div>
+                </div><span class="sp">Number of Arrests</span>&nbsp;<span id="sp-t">(hover for details)</span></div>
         </div>
         <!-- <select id="dropdown">
         <option value="QB">QB</option>
@@ -47,79 +51,79 @@
         <option value="WR">WR</option>
         <option value="TE">TE</option>
     </select> -->
-    <div class="dropdowns">
-        <div class="dropdown">
-            <button class="dropbtn">filter by position</button>
-            <div class="dropdown-content">
-                <button class="button-all button-t" id="button5">All Positions</button>
-                <button class="button-all button-t" id="button1">QB</button>
-                <button class="button-all button-t" id="button2">WR</button>
-                <button class="button-all button-t" id="button3">RB</button>
-                <button class="button-all button-t" id="button4">TE</button>
-                <button class="button-all button-t" id="button6">K</button>
-            </div>
-        </div>
-       
-        <div class="dropdown">
-            <button class="dropbtn">filter by team</button>
-            <div class="dropdown-content">
-                <button class="button-t" id="buttona">All Teams</button>
-                <button class="button-t" id="buttonb">49ers</button>
-                <button class="button-t" id="buttonc">Bears</button>
-                <button class="button-t" id="buttond">Bengals</button>
-                <button class="button-t" id="buttone">Bills</button>
-                <button class="button-t" id="buttonf">Broncos</button>
-                <button class="button-t" id="buttong">Browns</button>
-                <button class="button-t" id="buttonh">Buccaneers</button>
-                <button class="button-t" id="buttoni">Cardinals</button>
-                <button class="button-t" id="buttonj">Chargers</button>
-                <button class="button-t" id="buttonk">Chiefs</button>
-                <button class="button-t" id="buttonl">Colts</button>
-                <button class="button-t" id="buttonm">Cowboys</button>
-                <button class="button-t" id="buttonn">Dolphins</button>
-                <button class="button-t" id="buttono">Eagles</button>
-                <button class="button-t" id="buttonp">Falcons</button>
-                <button class="button-t" id="buttonq">Giants</button>
-                <button class="button-t" id="buttonr">Lions</button>
-                <button class="button-t" id="buttons">Jaguars</button>
-                <button class="button-t" id="buttont">Jets</button>
-                <button class="button-t" id="buttonu">Packers</button>
-                <button class="button-t" id="buttonv">Panthers</button>
-                <button class="button-t" id="buttonw">Patriots</button>
-                <button class="button-t" id="buttonx">Raiders</button>
-                <button class="button-t" id="buttony">Rams</button>
-                <button class="button-t" id="buttonz">Ravens</button>
-                <button class="button-t" id="buttonab">Redskins</button>
-                <button class="button-t" id="buttonac">Saints</button>
-                <button class="button-t" id="buttonad">Seahawks</button>
-                <button class="button-t" id="buttonae">Steelers</button>
-                <button class="button-t" id="buttonaf">Texas</button>
-                <button class="button-t" id="buttonag">Titans</button>
-                <button class="button-t" id="buttonah">Vikings</button>           
+        <div class="dropdowns">
+            <div class="dropdown">
+                <button class="dropbtn">filter by position</button>
+                <div class="dropdown-content">
+                    <button class="button-all button-t" id="button5">All Positions</button>
+                    <button class="button-all button-t" id="button1">QB</button>
+                    <button class="button-all button-t" id="button2">WR</button>
+                    <button class="button-all button-t" id="button3">RB</button>
+                    <button class="button-all button-t" id="button4">TE</button>
+                    <button class="button-all button-t" id="button6">K</button>
                 </div>
-        </div>
-
-        <div class="dropdown">
-            <button class="dropbtn">filter by arrest type</button>
-            <div class="dropdown-content" id="arrestdd">
-                <button class="button-all button-t button-a" id="buttonba">All</button>
-                <button class="button-all button-t button-a" id="buttonbhi">Alcohol</button>
-                <button class="button-all button-t button-a" id="buttonbg">Assault</button>
-                <button class="button-all button-t button-a" id="buttonbhi">Battery</button>
-                <button class="button-all button-t button-a" id="buttonbh">Disorderly conduct</button>
-                <button class="button-all button-t button-a" id="buttonbd">Domestic dispute</button>
-                <button class="button-all button-t button-a" id="buttonbz">Domestic violence</button>
-                <button class="button-all button-t button-a" id="buttonbf">Drugs</button>
-                <button class="button-all button-t button-a" id="buttonbc">DUI</button>
-                <button class="button-all button-t button-a" id="buttonbhi">Eluding police</button>
-                <button class="button-all button-t button-a" id="buttonbe">Gun</button>               
-                <button class="button-all button-t button-a" id="buttonbhi">Public intoxication</button>
-                <button class="button-all button-t button-a" id="buttonbhj">Reckless Driving</button>
-                <button class="button-all button-t button-a" id="buttonbd">Violating Court Order</button>
             </div>
-        </div>
-   
-        <button id="reset">reset</button>
+
+            <div class="dropdown">
+                <button class="dropbtn">filter by team</button>
+                <div class="dropdown-content">
+                    <button class="button-t" id="buttona">All Teams</button>
+                    <button class="button-t" id="buttonb">49ers</button>
+                    <button class="button-t" id="buttonc">Bears</button>
+                    <button class="button-t" id="buttond">Bengals</button>
+                    <button class="button-t" id="buttone">Bills</button>
+                    <button class="button-t" id="buttonf">Broncos</button>
+                    <button class="button-t" id="buttong">Browns</button>
+                    <button class="button-t" id="buttonh">Buccaneers</button>
+                    <button class="button-t" id="buttoni">Cardinals</button>
+                    <button class="button-t" id="buttonj">Chargers</button>
+                    <button class="button-t" id="buttonk">Chiefs</button>
+                    <button class="button-t" id="buttonl">Colts</button>
+                    <button class="button-t" id="buttonm">Cowboys</button>
+                    <button class="button-t" id="buttonn">Dolphins</button>
+                    <button class="button-t" id="buttono">Eagles</button>
+                    <button class="button-t" id="buttonp">Falcons</button>
+                    <button class="button-t" id="buttonq">Giants</button>
+                    <button class="button-t" id="buttonr">Lions</button>
+                    <button class="button-t" id="buttons">Jaguars</button>
+                    <button class="button-t" id="buttont">Jets</button>
+                    <button class="button-t" id="buttonu">Packers</button>
+                    <button class="button-t" id="buttonv">Panthers</button>
+                    <button class="button-t" id="buttonw">Patriots</button>
+                    <button class="button-t" id="buttonx">Raiders</button>
+                    <button class="button-t" id="buttony">Rams</button>
+                    <button class="button-t" id="buttonz">Ravens</button>
+                    <button class="button-t" id="buttonab">Redskins</button>
+                    <button class="button-t" id="buttonac">Saints</button>
+                    <button class="button-t" id="buttonad">Seahawks</button>
+                    <button class="button-t" id="buttonae">Steelers</button>
+                    <button class="button-t" id="buttonaf">Texas</button>
+                    <button class="button-t" id="buttonag">Titans</button>
+                    <button class="button-t" id="buttonah">Vikings</button>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">filter by arrest type</button>
+                <div class="dropdown-content" id="arrestdd">
+                    <button class="button-all button-t button-a" id="buttonba">All</button>
+                    <button class="button-all button-t button-a" id="buttonbhi">Alcohol</button>
+                    <button class="button-all button-t button-a" id="buttonbg">Assault</button>
+                    <button class="button-all button-t button-a" id="buttonbhi">Battery</button>
+                    <button class="button-all button-t button-a" id="buttonbh">Disorderly conduct</button>
+                    <button class="button-all button-t button-a" id="buttonbd">Domestic dispute</button>
+                    <button class="button-all button-t button-a" id="buttonbz">Domestic violence</button>
+                    <button class="button-all button-t button-a" id="buttonbf">Drugs</button>
+                    <button class="button-all button-t button-a" id="buttonbc">DUI</button>
+                    <button class="button-all button-t button-a" id="buttonbhi">Eluding police</button>
+                    <button class="button-all button-t button-a" id="buttonbe">Gun</button>
+                    <button class="button-all button-t button-a" id="buttonbhi">Public intoxication</button>
+                    <button class="button-all button-t button-a" id="buttonbhj">Reckless Driving</button>
+                    <button class="button-all button-t button-a" id="buttonbd">Violating Court Order</button>
+                </div>
+            </div>
+
+            <button id="reset">reset</button>
 
         </div>
         <!-- <button class="button-all" id="button1">QB</button> -->
