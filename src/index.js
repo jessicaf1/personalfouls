@@ -143,8 +143,7 @@ var svg = d3.select('svg')
     .attr('height', svgHeight)
     .attr('class', 'svg-container')
     
-    // var ax = svg.append('g')
-    // // .call(xAxis)
+   
     // var ax = svg.append(xAxis)
 
 var line = svg
@@ -256,6 +255,7 @@ svg
 
 
 
+
 //   var rect = svg.append('rect')
 //     .attr('x', 400)
 //     .attr('y', 100)
@@ -302,6 +302,7 @@ var xScale = d3.scaleLinear()
 var yScale = d3.scaleLinear()
     .domain([0, 20])
     .range([0, 400]);
+    debugger
 
 
 
@@ -494,28 +495,104 @@ const tooltip = d3.select("body")
 var xAxis = d3
     .axisBottom()
     .scale(xScale)
-    // .ticks(20)
-    //   .tickArguments([10], "|")
+    
+       // .ticks(20)
+       //   .tickArguments([10], "|")
 
-.tickSize([9])
-    //   .tickSizeOuter([10])
-    // .orient("bottom")
-    // .ticks(50)
-    // .tickFormat(x=>)
-    // .style("stroke", "pink")
-    // .style("z-index", 100)
-    //.tickValues([range(0, 8)])
-    .tickValues([.1, .2, .3, .4, .5, .6, .7, .8, .9,
-        1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9,
-        2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9,
-        3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9,
-        4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0,
-        5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9,
-        6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7.0,
-        7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1
-    ]);
+       .tickSize([9])
+       //   .tickSizeOuter([10])
+       // .orient("bottom")
+       // .ticks(50)
+       // .tickFormat(x=>)
+       // .style("stroke", "pink")
+       // .style("z-index", 100)
+       //.tickValues([range(0, 8)])
+       .tickValues([
+         0.1,
+         0.2,
+         0.3,
+         0.4,
+         0.5,
+         0.6,
+         0.7,
+         0.8,
+         0.9,
+         1,
+         1.1,
+         1.2,
+         1.3,
+         1.4,
+         1.5,
+         1.6,
+         1.7,
+         1.8,
+         1.9,
+         2,
+         2.1,
+         2.2,
+         2.3,
+         2.4,
+         2.5,
+         2.6,
+         2.7,
+         2.8,
+         2.9,
+         3,
+         3.1,
+         3.2,
+         3.3,
+         3.4,
+         3.5,
+         3.6,
+         3.7,
+         3.8,
+         3.9,
+         4,
+         4.1,
+         4.2,
+         4.3,
+         4.4,
+         4.5,
+         4.6,
+         4.7,
+         4.8,
+         4.9,
+         5.0,
+         5.1,
+         5.2,
+         5.3,
+         5.4,
+         5.5,
+         5.6,
+         5.7,
+         5.8,
+         5.9,
+         6,
+         6.1,
+         6.2,
+         6.3,
+         6.4,
+         6.5,
+         6.6,
+         6.7,
+         6.8,
+         6.9,
+         7.0,
+         7.1,
+         7.2,
+         7.3,
+         7.4,
+         7.5,
+         7.6,
+         7.7,
+         7.8,
+         7.9,
+         8,
+         8.1
+       ]);
 xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
-
+debugger;
+var ax = svg.append("g").call(xAxis);
 // function range(start, end){
 //     let arr = [];
 //     for (let i = start; i< end; i+=0.1){
@@ -524,12 +601,12 @@ xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
 //     return arr
 // // }
 
-// svg.append("g")
-//     .attr("class", "axis") //Assign "axis" class
-//     .attr("transform", "translate(0, 480)")
-//     .transition()
-//     .duration(2000)
-//     .call(xAxis)
+svg.append("g")
+    .attr("class", "axis") //Assign "axis" class
+    .attr("transform", "translate(0, 480)")
+    .transition()
+    .duration(2000)
+    .call(xAxis)
 //  xAxis.ticks(20)
 // createVisualization();
 
