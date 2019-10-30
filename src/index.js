@@ -142,6 +142,10 @@ var svg = d3.select('svg')
     .attr('width', svgWidth)
     .attr('height', svgHeight)
     .attr('class', 'svg-container')
+    
+    // var ax = svg.append('g')
+    // // .call(xAxis)
+    // var ax = svg.append(xAxis)
 
 var line = svg
     .append("line")
@@ -302,6 +306,7 @@ var yScale = d3.scaleLinear()
 
 
 function createVisualization(position = "", team = "", arrest = "") {
+      document.getElementById("results").classList.add("hidden");
     debugger
     const results = arr2.filter(function(d) {
         console.log(arr2);
@@ -450,18 +455,25 @@ document
         var y = document.getElementsByClassName("active-pos");
         var z = document.getElementsByClassName("active-t");
         var q = document.getElementsByClassName("active-a");
+        var b = document.getElementById("buttoP")
+        var c = document.getElementById("buttoT");
+        var d = document.getElementById("buttoA");
 
         var i;
         for (i = 0; i < y.length; i++) {
             document.getElementById(y[i].id).classList.remove("active-pos");
             document.getElementById(z[i].id).classList.remove("active-t");
-            document.getElementById(q[i].id).classList.remove("active-a");
-            document.getElementById('results').classList.add("hidden")
+            document.getElementById(q[i].id).classList.remove("active-a"); 
+            document.getElementById('results').classList.add("hidden");
+            b.innerText = "filter by position";
+            c.innerText = "filter by team";
+            d.innerText = "filter by arrest type";
         }
         createVisualization((position = ""), (team = ""), (arrest = ""));
     });
 
 function getRando(min, max) {
+
     return Math.random() * (max - min) + min;
 }
 
@@ -595,13 +607,16 @@ xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
 // });
 
 var x = document.getElementsByClassName("button-t");
+var b = document.getElementById("buttoP");
+var c = document.getElementById("buttoT");
+var f = document.getElementById("buttoA");
 var i;
 let position;
 let team;
 let arrest;
 
 for (i = 0; i < x.length; i++) {
-
+   
     x[i].addEventListener("click", function(d) {
         let arr = ['QB', 'RB', 'WR', 'TE', 'K', 'All Positions'];
         let arr2 = ["49ers", "Bears", "Bengals", "Bills", "Broncos", "Browns",
@@ -612,6 +627,7 @@ for (i = 0; i < x.length; i++) {
         ];
 
         if (arr.includes(d.target.innerText)) {
+             b.innerText = d.target.innerText;
             debugger
             if (document.getElementById(this.id).classList.contains('active-pos')) {
                 document.getElementById(this.id).classList.remove("active-pos");
@@ -634,6 +650,7 @@ for (i = 0; i < x.length; i++) {
         }
 
         if (arr2.includes(d.target.innerText)) {
+            c.innerText = d.target.innerText;
             if (document.getElementById(this.id).classList.contains("active-t")) {
                 document.getElementById(this.id).classList.remove("active-t");
             } else {
@@ -653,6 +670,7 @@ for (i = 0; i < x.length; i++) {
         }
 
         if (!arr.includes(d.target.innerText) && !arr2.includes(d.target.innerText)) {
+            f.innerText = d.target.innerText;
             if (document.getElementById(this.id).classList.contains("active-a")) {
                 document.getElementById(this.id).classList.remove("active-a");
             } else {
