@@ -594,7 +594,7 @@ var xAxis = d3
        ]);
 xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
 debugger;
-var ax = svg.append("g").call(xAxis);
+// var ax = svg.append("g").call(xAxis);
 // function range(start, end){
 //     let arr = [];
 //     for (let i = start; i< end; i+=0.1){
