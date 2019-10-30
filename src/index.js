@@ -458,17 +458,19 @@ document
         var q = document.getElementsByClassName("active-a");
         var b = document.getElementById("buttoP")
         var c = document.getElementById("buttoT");
-        var d = document.getElementById("buttoA");
-
+        var f = document.getElementById("buttoA");
+   b.innerText = "filter by position";
+   c.innerText = "filter by team";
+   f.innerText = "filter by arrest type";
+   
         var i;
         for (i = 0; i < y.length; i++) {
+           
             document.getElementById(y[i].id).classList.remove("active-pos");
             document.getElementById(z[i].id).classList.remove("active-t");
             document.getElementById(q[i].id).classList.remove("active-a"); 
             document.getElementById('results').classList.add("hidden");
-            b.innerText = "filter by position";
-            c.innerText = "filter by team";
-            d.innerText = "filter by arrest type";
+          
         }
         createVisualization((position = ""), (team = ""), (arrest = ""));
     });
