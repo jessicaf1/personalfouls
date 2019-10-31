@@ -35,13 +35,15 @@ fetch("https://nflarrest.com/api/v1/player")
                 player.Position === 'K')
 
             let counter = 0;
-            arr2.map(player => {
+            arr2.map((player,i) => {
                 //   debugger;
-
                 let name = player.Name.split(" ");
                 let fname = name[0];
                 let lname = name[1];
                 console.log(fname, lname);
+            
+
+              const fetchcrimes = (fname, lname, i) => {
 
                 fetch(
                     `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
@@ -55,20 +57,25 @@ fetch("https://nflarrest.com/api/v1/player")
                             arrests.push(arrest.category) + "";
                         });
                         player["crimes"] = arrests;
-                        debugger;
-                        if (counter === 42) {
+                        // debugger;
+                        if (i >= 42) {
                             loading = false;
                             document.getElementById("lds-circle").classList.add("hidden");
+                            debugger
+                            createVisualization();
                         }
-
-                        createVisualization();
-
-                        debugger;
+                       
+                        
+                    
+                        // debugger;
 
                         // console.log(player)
                         //   return console.log(data);
                     });
                 });
+            }
+             fetchcrimes(fname, lname, i);
+            
             });
 
             // let counter = 0
@@ -302,26 +309,29 @@ var xScale = d3.scaleLinear()
 var yScale = d3.scaleLinear()
     .domain([0, 20])
     .range([0, 400]);
-    debugger
+    // debugger
 
 
 
 function createVisualization(position = "", team = "", arrest = "") {
       document.getElementById("results").classList.add("hidden");
-    debugger
+    // debugger
     const results = arr2.filter(function(d) {
         console.log(arr2);
         debugger;
+        if (!d.crimes){
+            return false 
+        }
         if (
             d.Position.includes(position) &&
             d.Team_name.includes(team) &&
             d.crimes.toString().includes(arrest)
         ) {
-            debugger;
+            // debugger;
 
             return true;
         } else {
-            debugger;
+            // debugger;
             return false;
         }
 
@@ -447,12 +457,12 @@ function createVisualization(position = "", team = "", arrest = "") {
 //        check()
 //     }
 // } 	
-debugger
+// debugger
 
 document
     .getElementById("reset")
     .addEventListener("click", function(d) {
-        debugger
+        // debugger
         var y = document.getElementsByClassName("active-pos");
         var z = document.getElementsByClassName("active-t");
         var q = document.getElementsByClassName("active-a");
@@ -462,7 +472,7 @@ document
    b.innerText = "filter by position";
    c.innerText = "filter by team";
    f.innerText = "filter by arrest type";
-   
+
         var i;
         for (i = 0; i < y.length; i++) {
            
@@ -593,7 +603,7 @@ var xAxis = d3
          8.1
        ]);
 xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
-debugger;
+// debugger;
 // var ax = svg.append("g").call(xAxis);
 // function range(start, end){
 //     let arr = [];
@@ -707,7 +717,7 @@ for (i = 0; i < x.length; i++) {
 
         if (arr.includes(d.target.innerText)) {
              b.innerText = d.target.innerText;
-            debugger
+            // debugger
             if (document.getElementById(this.id).classList.contains('active-pos')) {
                 document.getElementById(this.id).classList.remove("active-pos");
             } else {
@@ -719,7 +729,7 @@ for (i = 0; i < x.length; i++) {
                 document.getElementById(this.id).classList.add("active-pos");
             }
 
-            debugger
+            // debugger
             if (d.target.innerText !== 'All Positions') {
                 position = d.target.innerText
                     // position.classList.add('active')
@@ -740,7 +750,7 @@ for (i = 0; i < x.length; i++) {
                 }
                 document.getElementById(this.id).classList.add("active-t");
             }
-            debugger;
+            // debugger;
             if (d.target.innerText !== "All Teams") {
                 team = d.target.innerText;
             } else {
@@ -760,16 +770,16 @@ for (i = 0; i < x.length; i++) {
                 }
                 document.getElementById(this.id).classList.add("active-a");
             }
-            debugger
+            // debugger
             if (d.target.innerText !== "All") {
-                debugger
+                // debugger
                 arrest = d.target.innerText;
             } else {
-                debugger
+                // debugger
                 arrest = ""
             }
         }
-        debugger
+        // debugger
         createVisualization(position, team, arrest);
 
     });
