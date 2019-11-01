@@ -58,7 +58,7 @@ fetch("https://nflarrest.com/api/v1/player")
                         });
                         player["crimes"] = arrests;
                         // debugger;
-                        if (i >= 42) {
+                        if (i >= 41) {
                             loading = false;
                             document.getElementById("lds-circle").classList.add("hidden");
                             debugger
