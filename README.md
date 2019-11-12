@@ -13,3 +13,6 @@ It is difficult to balance being an NFL fan with being a socially conscious pers
 •	Users can refine by type of arrest, team and position.
 
 • D3 used to create animation and hovering effects.  
+
+### Visualization:
+![Picture](https://user-images.githubusercontent.com/44717186/68712063-ef6f2e00-0568-11ea-8202-1ad97f390fff.png)
