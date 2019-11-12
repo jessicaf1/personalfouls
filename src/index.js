@@ -474,28 +474,28 @@ document
         f.innerText = "filter by arrest type";
 
         var i;
-        for (i = 0; i < z.length; i++) {
+        for (i = 0; i < y.length; i++) {
             debugger
-            document.getElementById(z[i].id).classList.remove("active-pos");
-            document.getElementById(z[i].id).classList.remove("active-t");
-            document.getElementById(z[i].id).classList.remove("active-a");
+            document.getElementById(y[i].id).classList.remove("active-pos");
+            // document.getElementById(z[i].id).classList.remove("active-t");
+            // document.getElementById(z[i].id).classList.remove("active-a");
             document.getElementById('results').classList.add("hidden");
 
         }
-        // for (i = 0; i < z.length; i++) {
+        for (i = 0; i < z.length; i++) {
 
-        //     // document.getElementById(y[i].id).classList.remove("active-pos");
-        //     document.getElementById(z[i].id).classList.remove("active-t");
-        //     // document.getElementById(q[i].id).classList.remove("active-a");
-        //     document.getElementById('results').classList.add("hidden");
+            // document.getElementById(y[i].id).classList.remove("active-pos");
+            document.getElementById(z[i].id).classList.remove("active-t");
+            // document.getElementById(q[i].id).classList.remove("active-a");
+            document.getElementById('results').classList.add("hidden");
 
-        // }
+        }
 
-        // for (i = 0; i < q.length; i++) {
-        //     document.getElementById(q[i].id).classList.remove("active-a");
-        //     document.getElementById('results').classList.add("hidden");
+        for (i = 0; i < q.length; i++) {
+            document.getElementById(q[i].id).classList.remove("active-a");
+            document.getElementById('results').classList.add("hidden");
 
-        // }
+        }
 
         createVisualization((position = ""), (team = ""), (arrest = ""));
     });
