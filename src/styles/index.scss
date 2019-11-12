@@ -187,7 +187,7 @@ body {
     top: 0;
 }
 
-#image2  {
+#image2 {
     width: 30px;
     float: right;
 }
@@ -198,16 +198,16 @@ body {
     margin-top: 2px;
 }
 
-#image4{
-    width: 20px; 
+#image4 {
+    width: 20px;
     float: right;
     margin-top: 2px;
 }
 
-#image5{
+#image5 {
     width: 17px;
-    float: right; 
-    margin-top: 4px; 
+    float: right;
+    margin-top: 4px;
 }
 
 body {
@@ -345,6 +345,11 @@ body {
 }
 
 .active-a {
+    font-weight: bold;
+    border: 1px solid green;
+}
+
+.active-pos {
     font-weight: bold;
     border: 1px solid green;
 }

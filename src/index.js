@@ -35,47 +35,47 @@ fetch("https://nflarrest.com/api/v1/player")
                 player.Position === 'K')
 
             let counter = 0;
-            arr2.map((player,i) => {
+            arr2.map((player, i) => {
                 //   debugger;
                 let name = player.Name.split(" ");
                 let fname = name[0];
                 let lname = name[1];
                 console.log(fname, lname);
-            
 
-              const fetchcrimes = (fname, lname, i) => {
 
-                fetch(
-                    `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
-                ).then(function(response) {
-                    counter++;
-                    response.json().then(function(data) {
-                        arrestArr = Object.values(data);
+                const fetchcrimes = (fname, lname, i) => {
 
-                        let arrests = [];
-                        arrestArr.forEach(arrest => {
-                            arrests.push(arrest.category) + "";
+                    fetch(
+                        `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
+                    ).then(function(response) {
+                        counter++;
+                        response.json().then(function(data) {
+                            arrestArr = Object.values(data);
+
+                            let arrests = [];
+                            arrestArr.forEach(arrest => {
+                                arrests.push(arrest.category) + "";
+                            });
+                            player["crimes"] = arrests;
+                            // debugger;
+                            if (i >= 41) {
+                                loading = false;
+                                document.getElementById("lds-circle").classList.add("hidden");
+                                debugger
+                                createVisualization();
+                            }
+
+
+
+                            // debugger;
+
+                            // console.log(player)
+                            //   return console.log(data);
                         });
-                        player["crimes"] = arrests;
-                        // debugger;
-                        if (i >= 41) {
-                            loading = false;
-                            document.getElementById("lds-circle").classList.add("hidden");
-                            debugger
-                            createVisualization();
-                        }
-                       
-                        
-                    
-                        // debugger;
-
-                        // console.log(player)
-                        //   return console.log(data);
                     });
-                });
-            }
-             fetchcrimes(fname, lname, i);
-            
+                }
+                fetchcrimes(fname, lname, i);
+
             });
 
             // let counter = 0
@@ -149,9 +149,9 @@ var svg = d3.select('svg')
     .attr('width', svgWidth)
     .attr('height', svgHeight)
     .attr('class', 'svg-container')
-    
-   
-    // var ax = svg.append(xAxis)
+
+
+// var ax = svg.append(xAxis)
 
 var line = svg
     .append("line")
@@ -309,18 +309,18 @@ var xScale = d3.scaleLinear()
 var yScale = d3.scaleLinear()
     .domain([0, 20])
     .range([0, 400]);
-    // debugger
+// debugger
 
 
 
 function createVisualization(position = "", team = "", arrest = "") {
-      document.getElementById("results").classList.add("hidden");
+    document.getElementById("results").classList.add("hidden");
     // debugger
     const results = arr2.filter(function(d) {
         console.log(arr2);
         debugger;
-        if (!d.crimes){
-            return false 
+        if (!d.crimes) {
+            return false
         }
         if (
             d.Position.includes(position) &&
@@ -462,26 +462,41 @@ function createVisualization(position = "", team = "", arrest = "") {
 document
     .getElementById("reset")
     .addEventListener("click", function(d) {
-        // debugger
+        debugger
         var y = document.getElementsByClassName("active-pos");
         var z = document.getElementsByClassName("active-t");
         var q = document.getElementsByClassName("active-a");
         var b = document.getElementById("buttoP")
         var c = document.getElementById("buttoT");
         var f = document.getElementById("buttoA");
-   b.innerText = "filter by position";
-   c.innerText = "filter by team";
-   f.innerText = "filter by arrest type";
+        b.innerText = "filter by position";
+        c.innerText = "filter by team";
+        f.innerText = "filter by arrest type";
 
         var i;
-        for (i = 0; i < y.length; i++) {
-           
-            document.getElementById(y[i].id).classList.remove("active-pos");
+        for (i = 0; i < z.length; i++) {
+            debugger
+            document.getElementById(z[i].id).classList.remove("active-pos");
             document.getElementById(z[i].id).classList.remove("active-t");
-            document.getElementById(q[i].id).classList.remove("active-a"); 
+            document.getElementById(z[i].id).classList.remove("active-a");
             document.getElementById('results').classList.add("hidden");
-          
+
         }
+        // for (i = 0; i < z.length; i++) {
+
+        //     // document.getElementById(y[i].id).classList.remove("active-pos");
+        //     document.getElementById(z[i].id).classList.remove("active-t");
+        //     // document.getElementById(q[i].id).classList.remove("active-a");
+        //     document.getElementById('results').classList.add("hidden");
+
+        // }
+
+        // for (i = 0; i < q.length; i++) {
+        //     document.getElementById(q[i].id).classList.remove("active-a");
+        //     document.getElementById('results').classList.add("hidden");
+
+        // }
+
         createVisualization((position = ""), (team = ""), (arrest = ""));
     });
 
@@ -507,111 +522,111 @@ const tooltip = d3.select("body")
 var xAxis = d3
     .axisBottom()
     .scale(xScale)
-    
-       // .ticks(20)
-       //   .tickArguments([10], "|")
 
-       .tickSize([9])
-       //   .tickSizeOuter([10])
-       // .orient("bottom")
-       // .ticks(50)
-       // .tickFormat(x=>)
-       // .style("stroke", "pink")
-       // .style("z-index", 100)
-       //.tickValues([range(0, 8)])
-       .tickValues([
-         0.1,
-         0.2,
-         0.3,
-         0.4,
-         0.5,
-         0.6,
-         0.7,
-         0.8,
-         0.9,
-         1,
-         1.1,
-         1.2,
-         1.3,
-         1.4,
-         1.5,
-         1.6,
-         1.7,
-         1.8,
-         1.9,
-         2,
-         2.1,
-         2.2,
-         2.3,
-         2.4,
-         2.5,
-         2.6,
-         2.7,
-         2.8,
-         2.9,
-         3,
-         3.1,
-         3.2,
-         3.3,
-         3.4,
-         3.5,
-         3.6,
-         3.7,
-         3.8,
-         3.9,
-         4,
-         4.1,
-         4.2,
-         4.3,
-         4.4,
-         4.5,
-         4.6,
-         4.7,
-         4.8,
-         4.9,
-         5.0,
-         5.1,
-         5.2,
-         5.3,
-         5.4,
-         5.5,
-         5.6,
-         5.7,
-         5.8,
-         5.9,
-         6,
-         6.1,
-         6.2,
-         6.3,
-         6.4,
-         6.5,
-         6.6,
-         6.7,
-         6.8,
-         6.9,
-         7.0,
-         7.1,
-         7.2,
-         7.3,
-         7.4,
-         7.5,
-         7.6,
-         7.7,
-         7.8,
-         7.9,
-         8,
-         8.1
-       ]);
+// .ticks(20)
+//   .tickArguments([10], "|")
+
+.tickSize([9])
+    //   .tickSizeOuter([10])
+    // .orient("bottom")
+    // .ticks(50)
+    // .tickFormat(x=>)
+    // .style("stroke", "pink")
+    // .style("z-index", 100)
+    //.tickValues([range(0, 8)])
+    .tickValues([
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1,
+        1.1,
+        1.2,
+        1.3,
+        1.4,
+        1.5,
+        1.6,
+        1.7,
+        1.8,
+        1.9,
+        2,
+        2.1,
+        2.2,
+        2.3,
+        2.4,
+        2.5,
+        2.6,
+        2.7,
+        2.8,
+        2.9,
+        3,
+        3.1,
+        3.2,
+        3.3,
+        3.4,
+        3.5,
+        3.6,
+        3.7,
+        3.8,
+        3.9,
+        4,
+        4.1,
+        4.2,
+        4.3,
+        4.4,
+        4.5,
+        4.6,
+        4.7,
+        4.8,
+        4.9,
+        5.0,
+        5.1,
+        5.2,
+        5.3,
+        5.4,
+        5.5,
+        5.6,
+        5.7,
+        5.8,
+        5.9,
+        6,
+        6.1,
+        6.2,
+        6.3,
+        6.4,
+        6.5,
+        6.6,
+        6.7,
+        6.8,
+        6.9,
+        7.0,
+        7.1,
+        7.2,
+        7.3,
+        7.4,
+        7.5,
+        7.6,
+        7.7,
+        7.8,
+        7.9,
+        8,
+        8.1
+    ]);
 xAxis.tickFormat(x => Number.isInteger(x) ? x : "")
-// debugger;
-// var ax = svg.append("g").call(xAxis);
-// function range(start, end){
-//     let arr = [];
-//     for (let i = start; i< end; i+=0.1){
-//         arr.push(i)
-//     }
-//     return arr
-// // }
+    // debugger;
+    // var ax = svg.append("g").call(xAxis);
+    // function range(start, end){
+    //     let arr = [];
+    //     for (let i = start; i< end; i+=0.1){
+    //         arr.push(i)
+    //     }
+    //     return arr
+    // // }
 
 svg.append("g")
     .attr("class", "axis") //Assign "axis" class
@@ -619,8 +634,8 @@ svg.append("g")
     .transition()
     .duration(2000)
     .call(xAxis)
-//  xAxis.ticks(20)
-// createVisualization();
+    //  xAxis.ticks(20)
+    // createVisualization();
 
 // body.append('div')
 //     .attr("class", "divv")
@@ -705,7 +720,7 @@ let team;
 let arrest;
 
 for (i = 0; i < x.length; i++) {
-   
+
     x[i].addEventListener("click", function(d) {
         let arr = ['QB', 'RB', 'WR', 'TE', 'K', 'All Positions'];
         let arr2 = ["49ers", "Bears", "Bengals", "Bills", "Broncos", "Browns",
@@ -716,15 +731,15 @@ for (i = 0; i < x.length; i++) {
         ];
 
         if (arr.includes(d.target.innerText)) {
-             b.innerText = d.target.innerText;
-            // debugger
-            if (document.getElementById(this.id).classList.contains('active-pos')) {
+            b.innerText = d.target.innerText;
+            debugger
+            if (document.getElementById(this.id).classList.contains("active-pos")) {
                 document.getElementById(this.id).classList.remove("active-pos");
             } else {
                 var y = document.getElementsByClassName("active-pos");
                 var i;
                 for (i = 0; i < y.length; i++) {
-                    document.getElementById(y[i].id).classList.remove('active-pos')
+                    document.getElementById(y[i].id).classList.remove("active-pos")
                 }
                 document.getElementById(this.id).classList.add("active-pos");
             }
