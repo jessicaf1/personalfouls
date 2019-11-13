@@ -44,33 +44,20 @@ fetch("https://nflarrest.com/api/v1/player")
 
 
                 const fetchcrimes = (fname, lname, i) => {
-
                     fetch(
                         `https://nflarrest.com/api/v1/player/topCrimes/${fname}%20${lname}`
                     ).then(function(response) {
-                        counter++;
                         response.json().then(function(data) {
                             arrestArr = Object.values(data);
-
                             let arrests = [];
                             arrestArr.forEach(arrest => {
                                 arrests.push(arrest.category) + "";
                             });
                             player["crimes"] = arrests;
-                            // debugger;
                             if (i >= 41) {
-                                loading = false;
                                 document.getElementById("lds-circle").classList.add("hidden");
-                                debugger
                                 createVisualization();
                             }
-
-
-
-                            // debugger;
-
-                            // console.log(player)
-                            //   return console.log(data);
                         });
                     });
                 }
